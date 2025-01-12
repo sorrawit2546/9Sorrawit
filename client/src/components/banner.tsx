@@ -15,7 +15,8 @@ export default function Banner() {
                 <label htmlFor="" className="max-w-full flex text-[48px] font-semibold">Hey, I’m 9Sorrawit Sangmanee</label>
                 <label htmlFor="" className="flex text-[64px] font-bold  bg-gradient-to-r from-[#000000] to-[#0D00FF] inline-block text-transparent bg-clip-text">UX/UI Design / Front-end Developer</label>
                 <label htmlFor="" className="flex text-[40px] font-bold  ">Graduate from <span className="bg-gradient-to-r from-[#C800FF] to-[#016466] inline-block text-transparent bg-clip-text">&nbsp;Software Engineering&nbsp;</span> BUU</label>
-                <div className="flex max-w-full justify-self-end border-[2px] w-[500] h-[500px] rounded-[500px] bg-[#FFFFFF]  ml-[89px]">
+                <div className="flex max-w-full justify-self-end border-[2px] w-[500] h-[500px] bg-[#FFFFFF]  rounded-[500px] ml-[89px]">
+                    <Image className='rounded-[500px]' src="/cat.webp" alt="" width={500} height={500} />
                 </div>
                 <div className='flex max-w-full justify-start gap-[22px] pb-[70px]'>
                     <Button className='w-[250px] h-[90px] rounded-[50px] text-[36px] font-semibold text-white bg-gradient-to-r from-[#3BE7EA] to-[#E29797]'><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="" width={50} />Github</Button>
