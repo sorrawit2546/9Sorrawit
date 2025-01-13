@@ -6,7 +6,7 @@ export default function Timeline() {
             <div className=' border-[5px] bg-[#B2FF00] border-black w-[50px] h-[50px] rounded-[100px]'>
             </div>
             <div className='flex flex-row w-full justify-center gap-10'>
-                <div className='border-[5px] border-black  bg-gradient-to-r from-[#D0BCFF] to-[#F8D0D0] rounded-[50px] w-[600px] h-[230px] mt-10'></div>
+                <div className='border-[5px] border-black border-dashed  bg-gradient-to-r from-[#D0BCFF] to-[#F8D0D0] rounded-[50px] w-[600px] h-[230px] mt-10'></div>
                 <div className='border-[5px] border-black h-[300px]'></div>
                 <div className='w-[600px] '></div>
             </div>
@@ -18,12 +18,11 @@ export default function Timeline() {
             </div>
             <div className=' border-[5px] bg-[#91c419] border-black w-[50px] h-[50px] rounded-[100px]'></div>
             <div className='flex flex-row w-full justify-center gap-10'>
-                <div className='border-[5px] border-black  rounded-[50px] w-[600px] h-[230px] mt-10'></div>
+                <div className='border-[5px] border-black border-double rounded-[50px] w-[600px] h-[230px]  bg-gradient-to-r from-[#a4ad1d] to-[#01522c] mt-10'></div>
                 <div className='border-[5px] border-black h-[300px]'></div>
                 <div className='w-[600px] '></div>
             </div>
             <div className=' border-[5px] bg-[#628511] border-black w-[50px] h-[50px] rounded-[100px]'></div>
-
         </div>
     );
 }

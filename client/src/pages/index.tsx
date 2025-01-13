@@ -14,6 +14,8 @@ export default function Home() {
         <Banner />
         <Bar/>
         <Timeline/>
+        <div className="border-black border-2 w-[1500px] flex justify-self-center"></div>
+        <div className="font-manrope text-[50px] font-bold pt-6 flex justify-self-center">Journal Writting</div>
         <Footer/>
         </div>
     </div>
