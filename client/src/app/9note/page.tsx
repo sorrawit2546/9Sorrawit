@@ -1,16 +1,19 @@
+"use client"
+import "@/styles/globals.css";
 import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
 import Header from "@/components/header";
-import Banner from "@/components/banner";
-import Bar from "@/components/bar";
-import Timeline from "@/components/timeline";
-import Footer from "@/components/footer";
-import { ModeToggle } from "@/components/modetoggle";
+import { Content } from "next/font/google";
 
 export default function About() {
   return (
-    <div className="flex flex-col items-center justify-center">
-        <h1>9Note</h1>
+    <div className="">
+        <Header/>
+        <div className="flex flex-col max-w-full lg:max-w-7xl lg:mt-40 justify-self-center items-center">
+          <h1 className="text-8xl">9Note</h1><br />
+          <h1 className="text-8xl">3 lines of positive notes</h1>
+          <button className="w-60 h-20 mt-6 rounded-[50px] bg-[#007AFF] text-5xl" id="secondary">What Is</button>
+          
+        </div>
     </div>
   );
 }
