@@ -23,8 +23,8 @@ export default function Header() {
     };
 
     return (
-        <div className="max-w-full lg:w-[1500px] h-[119px] bg-[#D0BCFF] flex items-center justify-self-center justify-center rounded-[50px] mt-[20px] font-manrope space-x-[85px]">
-            <div className="flex items-center justify-center gap-[15px]">
+        <div className="w-full h-auto pt-5 flex sm:flex-col md:flex-row lg:flex-row items-center justify-self-center justify-center font-manrope">
+            <div className="max-w-full w-96 sm:flex-col  md:flex-row flex items-center justify-center gap-[15px]">
                 <img
                     className="w-[80px] lg:w-[100px] h-[80px] lg:h-[100px] rounded-[50px] border-[2px]"
                     src="/logo9sorrawit.png"
@@ -34,11 +34,11 @@ export default function Header() {
                     9Sorrawit
                 </label>
             </div>
-            <div className="font-semibold text-[48px] space-x-[85px]">
+            <div className="font-semibold text-3xl space-x-10 flex sm:flex-col sm:space-x-0 md:flex-row">
                 <a
                     href="/"
                     onClick={(e) => isMounted && handleNavClick('/', e)}
-                    className={`px-6 py-2 rounded-[50px] transition-all duration-300 
+                    className={`sm:ml-0 ml-10 px-6 py-2 rounded-[50px] transition-all duration-300 
                         ${isMounted && currentPath === '/'
                             ? 'bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] text-black'
                             : 'text-white hover:bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] hover:bg-opacity-50'}`}
@@ -75,6 +75,9 @@ export default function Header() {
                 >
                     About
                 </a>
+            </div>
+            <div>
+                <a href=""></a>
             </div>
         </div>
     );
