@@ -1,7 +1,7 @@
 import Image from 'next/image';
 export default function Timeline() {
     return (
-        <div className="xl:w-[1280px] h-full bg-white drop-shadow-2xl rounded-[50px] mt-[40px] mb-[40px] pb-[40px] flex flex-col items-center justify-self-center justify-center text-center font-manrope gap-5 ">
+        <div className="xl:w-[1280px] h-full bg-white drop-shadow-2xl rounded-[50px] mb-[40px] pb-[40px] flex flex-col items-center justify-self-center justify-center text-center font-manrope gap-5 ">
             <label htmlFor="" className=' pt-7 text-[64px] font-semibold bg-gradient-to-r from-[#FF0062] to-[#D0BCFF] inline-block text-transparent bg-clip-text'>My Work Experience</label>
             <div className=' border-[5px] bg-[#B2FF00] border-black w-[50px] h-[50px] rounded-[100px]'>
             </div>

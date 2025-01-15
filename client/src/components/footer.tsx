@@ -8,7 +8,7 @@ export default function Footer() {
                 <div className='space-y-10'>
                     <div className="flex items-center justify-center gap-[15px]">
                         <img
-                            className="w-[80px] lg:w-[100px] h-[80px] lg:h-[100px] rounded-[50px] border-[2px]"
+                            className="w-[80px] lg:w-[100px] h-[80px] lg:h-[100px]"
                             src="/logo9sorrawit.png"
                             alt="logowebsite"
                         />
@@ -42,9 +42,7 @@ export default function Footer() {
                         />
                     </div>
                 </div>
-
             </div>
-
         </div>
     );
 }

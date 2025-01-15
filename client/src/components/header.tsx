@@ -44,14 +44,14 @@ export default function Header() {
 
     return (
         <div
-            className={`sticky top-0 w-full h-auto pt-5 pb-5 transition-all duration-300 ${isScrolling
+            className={`sticky top-0 w-full h-auto pt-5 pb-5 space-x-40 transition-all duration-300 ${isScrolling
                     ? 'bg-white/50 backdrop-blur-md shadow'
                     : 'bg-transparent'
                 } flex flex-col md:flex-row items-center justify-center font-manrope`}
         >
             <div className="max-w-full w-96 mb:flex-col sm:flex-col  md:flex-row flex items-center justify-center gap-[15px]">
                 <img
-                    className="w-[80px] lg:w-[100px] h-[80px] lg:h-[100px] rounded-[50px] border-[2px]"
+                    className="w-[80px] lg:w-[100px] h-[80px] lg:h-[100px]"
                     src="/logo9sorrawit.png"
                     alt="logowebsite"
                 />
