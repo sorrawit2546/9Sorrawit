@@ -78,7 +78,7 @@ export default function Header() {
                             ? 'bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] text-black'
                             : 'text-white hover:bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] hover:bg-opacity-50'}`}
                 >
-                    Github
+                    9Note
                 </a>
                 <a
                     href="/design"
