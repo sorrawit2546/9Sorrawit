@@ -9,6 +9,10 @@ export default {
   ],
   theme: {
   	extend: {
+		screens: {
+			'mb': '320px',
+			// => @media (min-width: 640px) { ... }
+		  },
 		fontFamily:{
 			kanit: ['Kanit', 'sans-serif'],
 			manrope: ['Manrope', 'sans-serif'],

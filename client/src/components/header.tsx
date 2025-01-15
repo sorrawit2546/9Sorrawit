@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
+import { ModeToggle } from './modetoggle';
 
 export default function Header() {
     const [currentPath, setCurrentPath] = useState('');
     const [isMounted, setIsMounted] = useState(false);
+
+    const [isScrolling, setIsScrolling] = useState(false);
 
     useEffect(() => {
         setIsMounted(true);
@@ -12,8 +15,25 @@ export default function Header() {
             setCurrentPath(window.location.pathname);
         };
 
+        const handleScroll = () => {
+            setIsScrolling(window.scrollY > 50);
+        }
+
+        window.addEventListener("scroll", handleScroll);
         window.addEventListener('popstate', handleLocationChange);
-        return () => window.removeEventListener('popstate', handleLocationChange);
+
+        return () => {
+            window.addEventListener("scroll", handleScroll);
+        window.addEventListener('popstate', handleLocationChange);
+        };
+    }, []);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolling(window.scrollY > 50);
+        }
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     const handleNavClick = (path: any, e: any) => {
@@ -23,8 +43,13 @@ export default function Header() {
     };
 
     return (
-        <div className="w-full h-auto pt-5 flex sm:flex-col md:flex-row lg:flex-row items-center justify-self-center justify-center font-manrope">
-            <div className="max-w-full w-96 sm:flex-col  md:flex-row flex items-center justify-center gap-[15px]">
+        <div
+            className={`sticky top-0 w-full h-auto pt-5 pb-5 transition-all duration-300 ${isScrolling
+                    ? 'bg-white/50 backdrop-blur-md shadow'
+                    : 'bg-transparent'
+                } flex flex-col md:flex-row items-center justify-center font-manrope`}
+        >
+            <div className="max-w-full w-96 mb:flex-col sm:flex-col  md:flex-row flex items-center justify-center gap-[15px]">
                 <img
                     className="w-[80px] lg:w-[100px] h-[80px] lg:h-[100px] rounded-[50px] border-[2px]"
                     src="/logo9sorrawit.png"
@@ -34,7 +59,7 @@ export default function Header() {
                     9Sorrawit
                 </label>
             </div>
-            <div className="font-semibold text-3xl space-x-10 flex sm:flex-col sm:space-x-0 md:flex-row">
+            <div className="font-semibold text-3xl space-x-10 flex mb:flex-col sm:flex-col sm:space-x-0 md:flex-row">
                 <a
                     href="/"
                     onClick={(e) => isMounted && handleNavClick('/', e)}
@@ -77,7 +102,7 @@ export default function Header() {
                 </a>
             </div>
             <div>
-                <a href=""></a>
+                <ModeToggle />
             </div>
         </div>
     );

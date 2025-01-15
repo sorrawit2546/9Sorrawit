@@ -16,7 +16,7 @@ export default function Footer() {
                             9Sorrawit
                         </label>
                     </div>
-                    <div className='font-white text-[40px] font-bold text-white'>
+                    <div className='font-white text-4xl font-bold text-white text-center'>
                         <label htmlFor="">Copyright {dateYear} — 9Sorrawit. All rights reserved.</label>
                     </div>
                     <div className='flex gap-[20px] justify-center'>
