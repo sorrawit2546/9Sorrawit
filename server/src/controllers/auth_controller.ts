@@ -25,15 +25,13 @@ exports.register = async (req:any , res:any)=>{
             })
         }
         //Check email Already
-        const checkEmail = prisma.user.findUnique({
-            where: {
-                email : email
-            }
-        })
-    
-        if (email) {
-            res.json({message:"Email is already use!"})
-        }
+        const user = prisma.user.findUnique({
+            select: {
+                email:true
+            },
+        },
+        res.json({message:"email already use"}))
+
         //Hash Password
         const salt = await bcrypt.genSalt(10)
         const hashPassword = await bcrypt.hash(password,salt)
@@ -42,13 +40,14 @@ exports.register = async (req:any , res:any)=>{
             data:{
                 email: email,
                 name: name,
-                password: hashPassword
+                password: hashPassword,
+                // role: "ADMIN"
             },
             // select:{
             //     id:true,
-            //     email:true
+            //     email:true 
             // }
-        })
+        }) 
         res.json({
             message:"Send Complete" , email , name
         });

@@ -23,7 +23,7 @@ export default function card() {
     }, [])
 
     return (
-        <div className='grid grid-cols-3 space-x-5 space-y-5'>
+        <div className='grid grid-cols-3 space-x-5 space-y-5 dark:text-black'>
             {data.map(mock => (
                 <div className='flex flex-col drop-shadow-2xl max-w-full xl:w-80 xl:h-96 rounded-[30px] bg-white items-center hover:transition duration-500 hover:scale-110'>
                     <div className='flex justify-center items-center mt-6 ml-6 mr-6 mb-6 w-72 h-44 rounded-[15px] bg-gradient-to-b from-[#0D00FF] to-[#7D5FDF] to-[#EEBEBE]'>
