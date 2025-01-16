@@ -8,6 +8,7 @@ import Bar from "@/components/bar";
 import Timeline from "@/components/timeline";
 import Footer from "@/components/footer";
 import { ModeToggle } from "@/components/modetoggle";
+import Cardblog  from "@/components/card";
 
 export default function Home() {
     return (
@@ -17,8 +18,9 @@ export default function Home() {
             <Timeline />
             <div className="xl:w-[1280px] border-black dark:border-white border-2  flex justify-self-center"></div>
             <div className="font-manrope text-[50px] font-bold pt-6 flex justify-self-center">
-                Journal Writing
+                Blog!
             </div>
+            <Cardblog/>
             <Footer />
         </div>
     );
