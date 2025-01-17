@@ -21,5 +21,3 @@ readdirSync('./src/routes').map((item:string)=>app.use('/api',require('./routes/
 app.listen(PORT , () => {
     console.log(`Server is running on port ${PORT}`);
 })
-
-
