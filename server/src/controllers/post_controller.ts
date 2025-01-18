@@ -1,7 +1,8 @@
+import { Request, Response } from 'express';
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
-exports.createPost = async (req:any , res:any) => {
+exports.createPost = async (req:Request , res:Response) => {
     const {title , content , imageCover, authorId } = req.body;
     try {
         const data = await prisma.post.create({

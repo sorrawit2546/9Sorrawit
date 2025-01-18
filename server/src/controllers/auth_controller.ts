@@ -2,6 +2,7 @@ const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 const jwt = require('jsonwebtoken');
 import bcrypt from "bcrypt";
+import { token } from "morgan";
 
 exports.getUser = async (req:any , res:any) => {
     const user = await prisma.user.findMany()
@@ -25,12 +26,12 @@ exports.register = async (req:any , res:any)=>{
             })
         }
         //Check email Already
-        const user = prisma.user.findUnique({
-            select: {
-                email:true
-            },
-        },
-        res.json({message:"email already use"}))
+        // const user = prisma.user.findUnique({
+        //     select: {
+        //         email:true
+        //     },
+        // },
+        // res.json({message:"email already use"}))
 
         //Hash Password
         const salt = await bcrypt.genSalt(10)
@@ -50,7 +51,7 @@ exports.register = async (req:any , res:any)=>{
         }) 
         res.json({
             message:"Send Complete" , email , name
-        });
+        }); 
     } catch (error) {
         console.log(error);
         res.json({message:"Error"}).status(500);
