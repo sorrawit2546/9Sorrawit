@@ -8,33 +8,35 @@ interface myParams {
         id:string
     }
 }
-interface attractions {
-  id: number,
-  name: string,
-  detail: string,
-  coverimage: string,
-  latitude: number,
-  longitude: number
-}
+interface blogs {
+        id: number;
+        Title: string;
+        Description: string;
+        Thumbnail:{
+            url:string
+        };
+        Date: string;
+        email: string | null;
+        author: string;
+    }
 
 export default function Page({ params }: myParams) {
-  const [data, setData] = useState<attractions | null>(null);
+  const [data, setData] = useState<blogs | null>(null);
 
   useEffect(() => {
     const getDataid = async () => {
-      const response = await axios.get(`https://www.melivecode.com/api/attractions/${params.id}`);
-      const data = response.data;
+      const response = await axios.get(`http://localhost:1337/api/blogs?filters[id][$eq]=${params.id}`);
+      const data = response.data.data;
       setData(data);
     };
     getDataid();
   }, [params.id]);
 
+  console.log(data)
   return (
     <div>
-      <li>
-        {data?.attraction.name}
-        {data?.attraction.detail}
-      </li>
+       
+ 
     </div>
   );
 }
