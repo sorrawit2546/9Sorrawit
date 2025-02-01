@@ -14,7 +14,7 @@ export default function Home() {
             <Banner />
             <Timeline />
             <div className="font-manrope text-[50px] font-bold pt-6 flex justify-self-center">
-                BLOG!
+                💻BLOG!
             </div>
             <Card />
             <Footer />

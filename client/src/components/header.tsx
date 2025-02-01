@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+'use client'
+import { useState, useEffect, MouseEvent } from 'react';
 import { ModeToggle } from './modetoggle';
 
 export default function Header() {
@@ -36,11 +37,18 @@ export default function Header() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const handleNavClick = (path: any, e: any) => {
-        e.preventDefault();
-        window.history.pushState({}, '', path);
-        setCurrentPath(path);
-    };
+    useEffect(()=>{
+        const handleNavClick = (path: any, e: any) => {
+            e.preventDefault();
+            window.history.pushState({}, '', path);
+            setCurrentPath(path);
+        };
+    },);
+
+
+    function handleNavClick(arg0: string, e: MouseEvent<HTMLAnchorElement>): void {
+        throw new Error('Function not implemented.');
+    }
 
     return (
         <div
@@ -66,7 +74,7 @@ export default function Header() {
                     className={`sm:ml-0 ml-10 px-6 py-2 rounded-[50px] transition-all duration-300 
                         ${isMounted && currentPath === '/'
                             ? 'bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] text-black'
-                            : 'text-white hover:bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] hover:bg-opacity-50'}`}
+                            : 'text-black hover:bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] hover:bg-opacity-50'}`}
                 >
                     Home
                 </a>
@@ -76,7 +84,7 @@ export default function Header() {
                     className={`px-6 py-2 rounded-[50px] transition-all duration-300 
                         ${isMounted && currentPath === '/github'
                             ? 'bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] text-black'
-                            : 'text-white hover:bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] hover:bg-opacity-50'}`}
+                            : 'text-black hover:bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] hover:bg-opacity-50'}`}
                 >
                     9Note
                 </a>
@@ -86,7 +94,7 @@ export default function Header() {
                     className={`px-6 py-2 rounded-[50px] transition-all duration-300 
                         ${isMounted && currentPath === '/design'
                             ? 'bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] text-black'
-                            : 'text-white hover:bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] hover:bg-opacity-50'}`}
+                            : 'text-black hover:bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] hover:bg-opacity-50'}`}
                 >
                     Desgin
                 </a>
@@ -96,7 +104,7 @@ export default function Header() {
                     className={`px-6 py-2 rounded-[50px] transition-all duration-300 
                         ${isMounted && currentPath === '/about'
                             ? 'bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] text-black'
-                            : 'text-white hover:bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] hover:bg-opacity-50'}`}
+                            : 'text-black hover:bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] hover:bg-opacity-50'}`}
                 >
                     About
                 </a>
