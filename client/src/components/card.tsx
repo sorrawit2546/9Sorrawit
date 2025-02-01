@@ -46,7 +46,7 @@ export default function Card() {
                                     </span>
                                 ))}
                             </div>
-                            <div className="text-2xl pl-4 pr-4 h-14">
+                            <div className="text-2xl pl-4 pr-4 h-14 ">
                                 {frontmatter.title}
                             </div>
                             <div className="text-xl pl-4 pr-4">

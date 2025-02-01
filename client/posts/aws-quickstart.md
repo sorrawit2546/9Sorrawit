@@ -6,22 +6,6 @@ tags: ["code" , "aws" , "cloud"]
 date: "2020-12-27"
 ---
 
-
-**Table of Contents**
-
-- [Getting Started](#getting-started)
-  - [Create an account](#create-an-account)
-  - [Install the CLI](#install-the-cli)
-  - [Create an IAM user](#create-an-iam-user)
-  - [Configure the CLI](#configure-the-cli)
-  - [Configuration files](#configuration-files)
-  - [Test the CLI!](#test-the-cli)
-  - [AWS SDK](#aws-sdk)
-  - [That's it!](#thats-it)
-- [Why AWS?](#why-aws)
-- [Why Serverless?](#why-serverless)
-- [Continue Learning](#continue-learning)
-
 "Cloud computing" plays a vital role in the creation of software products and services. It's also one of the most highly sought-after skills in the tech industry.
 
 In fact, most of the projects on this site will require cloud interaction of some sort—particularly with AWS's serverless products.
@@ -37,7 +21,7 @@ If you don't already have an account then [sign up here](https://portal.aws.amaz
 
 Once you are signed up, you should be able to log in to the [AWS Console](https://aws.amazon.com/console/). It might look overwhelming if you're seeing for the first time.
 
-### Install the CLI
+### <span style="color: #74b7ff;">Install the CLI</span>
 
 The AWS CLI is a command-line application that lets you interact with your AWS account from the terminal. It's available on all platforms.
 
