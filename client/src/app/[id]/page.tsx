@@ -45,7 +45,7 @@ export default function Page({ params }: MyParams) {
     getDataById();
   }, [params.id]);
 
-
+  console.log(data)
 
   return (
     <div>
@@ -57,7 +57,7 @@ export default function Page({ params }: MyParams) {
 
           {/* ใช้ dangerouslySetInnerHTML แสดง HTML */}
           
-
+         
           {data.Thumbnail?.url && <img src={data.Thumbnail.url} alt={data.Title} />}
 
           <p>{data.Date}</p>
