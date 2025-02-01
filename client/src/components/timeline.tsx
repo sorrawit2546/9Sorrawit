@@ -8,7 +8,7 @@ export default function Timeline() {
             </div>
             <div className='flex flex-row space-x-5'>
                 <div className='flex justify-center text-2xl font-bold mt-6  rounded-[15px] bg-[#e6e6e6] w-40 h-14 '>
-                    <button className=''>React</button>
+                    <button className='flex items-center gap-2'><img src="/images/React-icon.png" alt="" className='w-[40px] h-[40px] '/>React</button>
                 </div>
                 <div className='flex justify-center text-2xl font-bold mt-6  rounded-[15px] bg-[#e6e6e6] w-40 h-14 '>
                     <button className=''>Tailwind</button>

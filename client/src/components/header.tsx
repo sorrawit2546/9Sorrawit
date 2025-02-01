@@ -67,14 +67,14 @@ export default function Header() {
                     9Sorrawit
                 </label>
             </div>
-            <div className="font-semibold text-3xl space-x-10 flex mb:flex-col sm:flex-col sm:space-x-0 md:flex-row">
+            <div className="font-semibold text-3xl space-x-10 flex mb:flex-col sm:flex-col sm:space-x-0 md:flex-row dark:text-white">
                 <a
                     href="/"
                     onClick={(e) => isMounted && handleNavClick('/', e)}
                     className={`sm:ml-0 ml-10 px-6 py-2 rounded-[50px] transition-all duration-300 
                         ${isMounted && currentPath === '/'
-                            ? 'bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] text-black'
-                            : 'text-black hover:bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] hover:bg-opacity-50'}`}
+                            ? 'bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] text-black '
+                            : 'dark:text-white hover:bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] hover:bg-opacity-50'}`}
                 >
                     Home
                 </a>
@@ -83,8 +83,8 @@ export default function Header() {
                     onClick={(e) => isMounted && handleNavClick('/github', e)}
                     className={`px-6 py-2 rounded-[50px] transition-all duration-300 
                         ${isMounted && currentPath === '/github'
-                            ? 'bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] text-black'
-                            : 'text-black hover:bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] hover:bg-opacity-50'}`}
+                            ? 'bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] text-black '
+                            : 'dark:text-white hover:bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] hover:bg-opacity-50'}`}
                 >
                     9Note
                 </a>
@@ -93,8 +93,8 @@ export default function Header() {
                     onClick={(e) => isMounted && handleNavClick('/design', e)}
                     className={`px-6 py-2 rounded-[50px] transition-all duration-300 
                         ${isMounted && currentPath === '/design'
-                            ? 'bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] text-black'
-                            : 'text-black hover:bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] hover:bg-opacity-50'}`}
+                            ? 'bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] text-black '
+                            : 'dark:text-white hover:bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] hover:bg-opacity-50'}`}
                 >
                     Desgin
                 </a>
@@ -103,8 +103,8 @@ export default function Header() {
                     onClick={(e) => isMounted && handleNavClick('/about', e)}
                     className={`px-6 py-2 rounded-[50px] transition-all duration-300 
                         ${isMounted && currentPath === '/about'
-                            ? 'bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] text-black'
-                            : 'text-black hover:bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] hover:bg-opacity-50'}`}
+                            ? 'bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] text-black '
+                            : 'dark:text-white hover:text-black hover:bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] hover:bg-opacity-50 '}`}
                 >
                     About
                 </a>
