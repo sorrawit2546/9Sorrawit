@@ -40,7 +40,7 @@ const PostPage = (props: any) => {
     const contentWithToc = '[[toc]]\n\n' + post.content;
 
     return (
-        <div className="dark:bg-black dark:text-white">
+        <div className=" dark:bg-black dark:text-white h-full">
             <Header />
             <div className="font-manrope flex justify-center">
                 <article className="prose lg:prose-xl prose-slate dark:prose-invert max-w-4xl px-4">

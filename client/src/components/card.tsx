@@ -1,3 +1,4 @@
+
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -46,10 +47,10 @@ export default function Card() {
                                     </span>
                                 ))}
                             </div>
-                            <div className="text-2xl pl-4 pr-4 h-14 ">
+                            <div className="text-2xl pl-4 pr-4 h-15 ">
                                 {frontmatter.title}
                             </div>
-                            <div className="text-xl pl-4 pr-4">
+                            <div className="text-xl pl-4 pr-4 ">
                                 {frontmatter.metaDesc}
                             </div>
 
