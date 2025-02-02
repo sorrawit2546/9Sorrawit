@@ -25,7 +25,7 @@ export default function Card() {
     const posts = getPostMetadata();
 
     return (
-        <div className="grid grid-cols-3 space-x-5 mt-5 mb-5 dark:text-black">
+        <div className="grid grid-cols-3 gap-5 mt-5 mb-5 dark:text-black">
             {posts.map(({ slug, frontmatter }) => (
                 <a href={`/posts/${slug}`}>
                     <div
@@ -47,12 +47,17 @@ export default function Card() {
                                     </span>
                                 ))}
                             </div>
-                            <div className="text-2xl pl-4 pr-4 h-15 ">
+                            <div className="text-sm pl-3 pr-3">
+                                <div className={badgeVariants({ variant: "default" })}>
+                                    📅{frontmatter.date}
+                                </div>
+                            </div>
+                            <div className="text-2xl pl-3 pr-3 h-15 pt-3 ">
                                 {frontmatter.title}
                             </div>
-                            <div className="text-xl pl-4 pr-4 ">
+                            {/* <div className="text-xl pl-4 pr-4 ">
                                 {frontmatter.metaDesc}
-                            </div>
+                            </div> */}
 
 
                         </div>
