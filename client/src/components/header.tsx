@@ -79,7 +79,7 @@ export default function Header() {
                     Home
                 </a>
                 <a
-                    href="/github"
+                    href="/9note"
                     onClick={(e) => isMounted && handleNavClick('/github', e)}
                     className={`px-6 py-2 rounded-[50px] transition-all duration-300 
                         ${isMounted && currentPath === '/github'

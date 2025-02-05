@@ -1,16 +1,16 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
-import Header from "@/components/header";
-import Banner from "@/components/banner";
-import Bar from "@/components/bar";
-import Timeline from "@/components/timeline";
-import Footer from "@/components/footer";
+
+import "@/styles/globals.css";
 import { ModeToggle } from "@/components/modetoggle";
+import Header from "@/components/header";
+import ScrollTriggered from "@/components/ScrollTriggered";
 
 export default function About() {
   return (
-    <div className="flex flex-col items-center justify-center">
-       <ModeToggle/>
+    <div className="dark:bg-zinc-900 dark:text-white">
+      <Header />
+      <div className="flex flex-col items-center justify-center ">
+        <ScrollTriggered/>
+      </div>
     </div>
   );
 }
