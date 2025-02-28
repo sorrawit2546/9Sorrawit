@@ -55,11 +55,6 @@ export default function Card() {
                             <div className="text-2xl pl-3 pr-3 h-15 pt-3 ">
                                 {frontmatter.title}
                             </div>
-                            {/* <div className="text-xl pl-4 pr-4 ">
-                                {frontmatter.metaDesc}
-                            </div> */}
-
-
                         </div>
                     </div>
                 </a>
