@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect, MouseEvent } from 'react';
+import { X , Menu } from 'lucide-react';
 import { ModeToggle } from './modetoggle';
 
 export default function Header() {
@@ -7,6 +8,12 @@ export default function Header() {
     const [isMounted, setIsMounted] = useState(false);
 
     const [isScrolling, setIsScrolling] = useState(false);
+
+    const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
+
+    const  toggleNavbar = () => {
+        setMobileDrawerOpen(!mobileDrawerOpen);
+    };
 
     useEffect(() => {
         setIsMounted(true);
@@ -57,7 +64,7 @@ export default function Header() {
                     : 'bg-transparent'
                 } flex flex-col md:flex-row items-center justify-center font-manrope`}
         >
-            <div className="max-w-full w-96 mb:flex-col sm:flex-col  md:flex-row flex items-center justify-center gap-[15px]">
+            <div className=" max-w-full w-96 mb:flex-row sm:flex-row  md:flex-row flex items-center justify-center gap-[15px]">
                 <img
                     className="w-[80px] lg:w-[100px] h-[80px] lg:h-[100px]"
                     src="/logo9sorrawit.png"
@@ -67,7 +74,7 @@ export default function Header() {
                     9Sorrawit
                 </label>
             </div>
-            <div className="font-semibold text-3xl space-x-10 flex mb:flex-col sm:flex-col sm:space-x-0 md:flex-row dark:text-white">
+            <div className="font-semibold text-3xl space-x-10 flex mb:flex-col sm:flex-col sm:space-x-0 md:flex-row  dark:text-white">
                 <a
                     href="/"
                     onClick={(e) => isMounted && handleNavClick('/', e)}
@@ -109,7 +116,7 @@ export default function Header() {
                     About
                 </a>
             </div>
-            <div>
+            <div className=''>
                 <ModeToggle />
             </div>
         </div>
