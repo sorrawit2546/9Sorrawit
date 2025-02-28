@@ -17,7 +17,7 @@ export default function Footer() {
                             9Sorrawit
                         </label>
                     </div>
-                    <div className='font-white text-4xl font-bold dark:text-white text-center'>
+                    <div className='font-white text-3xl font-bold dark:text-white text-center'>
                         <label htmlFor="">Copyright {dateYear} — 9Sorrawit. All rights reserved.</label>
                     </div>
                     <div className='flex gap-[20px] justify-center'>
@@ -29,11 +29,6 @@ export default function Footer() {
                         <img
                             className="w-[80px] lg:w-[100px] h-[80px] lg:h-[100px] rounded-[50px] border-[2px]"
                             src="https://img.icons8.com/m_rounded/512/facebook-new.png"
-                            alt="logowebsite"
-                        />
-                        <img
-                            className="w-[80px] lg:w-[100px] h-[80px] lg:h-[100px] rounded-[50px] border-[2px]"
-                            src="https://s.w.org/style/images/about/WordPress-logotype-wmark-white.png"
                             alt="logowebsite"
                         />
                         <img

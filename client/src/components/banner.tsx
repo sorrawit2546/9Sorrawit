@@ -21,10 +21,11 @@ export default function Banner() {
                 <div className="flex max-w-full justify-self-end lg:w-[500px] lg:h-[500px] md:w-80 md:h-80 mt-3   bg-[#FFFFFF]  rounded-full shadow-2xl">
                     <Image className='rounded-full' src="/logo-1.png" alt="" width={500} height={500} />
                 </div>
-                <div className='flex mb:flex-col sm:flex-col sm:items-center md:flex-row  sm:pt-4 md:pt-4 max-w-full justify-start gap-[22px] pb-[70px] drop-shadow-2xl'>
-                    <Button className='w-64 h-[90px] rounded-[10px] text-2xl font-semibold text-black bg-white'><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="" width={50} />Github</Button>
-                    <Button className='w-64 h-[90px] rounded-[10px] text-2xl font-semibold text-black bg-white'><img src="https://cdn.icon-icons.com/icons2/2997/PNG/512/medium_logo_icon_187624.png" alt="" width={50} />Medium</Button>
-                    <Button className='w-64 h-[90px] rounded-[10px] text-2xl font-semibold text-black bg-white'><img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="" width={50} />Linked</Button>
+                <div className='z-10 flex mb:flex-col sm:flex-col sm:items-center md:flex-row  sm:pt-4 md:pt-4 max-w-full justify-start gap-[22px] pb-[70px] drop-shadow-2xl'>
+                    <a href="https://github.com/sorrawit2546" target="_blank" rel="noopener noreferrer">
+                    <Button className=' w-64 h-[90px] rounded-[10px] text-2xl font-semibold text-black bg-white'><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="" width={50} />Github</Button>
+                    </a>
+                    <Button className=' w-64 h-[90px] rounded-[10px] text-2xl font-semibold text-black bg-white'><img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="" width={50} />Linked</Button>
                 </div>
             </div>
 
