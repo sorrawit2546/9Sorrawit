@@ -77,7 +77,7 @@ export default function Header() {
             className={`sticky top-0 z-[1000] w-full h-auto pt-5 pb-5 space-x-auto transition-all duration-300 ${isScrolling
                 ? 'bg-white/50 backdrop-blur-md shadow'
                 : 'bg-transparent'
-                } flex flex-col sm:flex-col md:flex-col lg:flex-col xl:flex-row items-center justify-center font-manrope`}
+                } flex flex-col sm:flex-col md:flex-col lg:flex-col xl:flex-row items-center justify-center font-manrope space-x-5`}
         >
             <div className=" max-w-full w-96 mb:flex-row sm:flex-row  md:flex-row flex items-center justify-center gap-[15px]">
                 <img
@@ -108,7 +108,7 @@ export default function Header() {
                             ? 'bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] text-black '
                             : 'dark:text-white hover:bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] hover:bg-opacity-50'}`}
                 >
-                    9Note
+                    Note
                 </a>
                 <a
                     href="/design"
@@ -159,7 +159,7 @@ export default function Header() {
                                 ? 'bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] text-black '
                                 : 'dark:text-white hover:bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] hover:bg-opacity-50'}`}
                     >
-                        9Note
+                        Note
                     </a>
                     <a
                         href="/design"

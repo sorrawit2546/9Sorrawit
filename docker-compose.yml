@@ -1,6 +1,4 @@
-version: '3.8'
 services:
- 
   frontend:
     build:
       context: ./client
@@ -12,6 +10,20 @@ services:
     environment:
       - NODE_ENV=development
 
+  server:
+    build:
+      context: ./server
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./server:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://myuser:mypassword@postgres:5432/mydatabase
+    depends_on:
+      - postgres
+
   postgres:
     image: postgres:latest
     environment:
@@ -22,6 +34,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
+
   pgadmin:
     image: dpage/pgadmin4
     environment:
@@ -33,5 +46,4 @@ services:
       - postgres
 
 volumes:
- postgres-data:
-  
+  postgres-data:

@@ -24,11 +24,11 @@
     "morgan": "^1.10.0",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
-    "tsc": "^2.0.4",
-    "typescript": "^5.7.3"
+    "tsc": "^2.0.4"
   },
   "devDependencies": {
     "@types/morgan": "^1.9.9",
-    "prisma": "^6.2.1"
+    "prisma": "^6.2.1",
+    "typescript": "^5.8.2"
   }
 }

@@ -17,9 +17,9 @@ export default function Banner() {
             <div className="max-w-full w-auto sm:pl-40 sm:pr-40 lg:w-6/6 2xl:w-6/6 pl-64 pr-64 pt-16 justify-self-center justify-center">
                 <label htmlFor="" className="max-w-full flex text-[48px]  font-semibold ">💬Hey, I’m 9Sorrawit Sangmanee</label>
                 <label htmlFor="" className="max-w-full flex mb:flex-col sm:flex-col md:flex-row  text-[64px] font-bold  bg-gradient-to-r from-[#000000] to-[#0D00FF] inline-block text-transparent bg-clip-text">UX/UI Design / Front-end Developer</label>
-                <label htmlFor="" className="max-w-full flex mb:flex-col sm:flex-col md:flex-row text-[40px] font-bold  ">Graduate from <span className="bg-gradient-to-r from-[#C800FF] to-[#016466] inline-block text-transparent bg-clip-text">&nbsp;Software Engineering #12&nbsp;</span> BUU</label>
-                <div className="flex max-w-full justify-self-end lg:w-[500px] lg:h-[500px] md:w-80 md:h-80 mt-3   bg-[#FFFFFF]  rounded-full shadow-2xl">
-                    <Image className='rounded-full' src="/logo-1.png" alt="" width={500} height={500} />
+                <label htmlFor="" className="max-w-full flex mb:flex-col sm:flex-col md:flex-row md:text-[35px] lg:text-[40px] text-[40px]  font-bold  ">Graduate from <span className="bg-gradient-to-r from-[#C800FF] to-[#016466] inline-block text-transparent bg-clip-text">&nbsp;Software Engineering #12&nbsp;</span> BUU</label>
+                <div className="flex max-w-full justify-self-end lg:w-[500px] lg:h-[500px] md:w-80 md:h-80 sm:w-60 sm:h-60 mt-3   bg-[#FFFFFF]  rounded-full shadow-2xl">
+                    <Image className='rounded-full' src="/cat.webp" alt="" width={500} height={500} />
                 </div>
                 <div className='z-10 flex mb:flex-col sm:flex-col sm:items-center md:flex-row  sm:pt-4 md:pt-4 max-w-full justify-start gap-[22px] pb-[70px] drop-shadow-2xl'>
                     <a href="https://github.com/sorrawit2546" target="_blank" rel="noopener noreferrer">

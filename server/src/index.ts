@@ -1,7 +1,7 @@
-import express from 'express';
+const express = require('express');
 import { Response , Request } from 'express';
-import bodyParser from 'body-parser';
-import morgan from 'morgan';
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
 const cors = require("cors");
 const {readdirSync} = require('fs');
 

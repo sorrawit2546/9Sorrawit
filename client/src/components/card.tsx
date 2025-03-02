@@ -30,11 +30,11 @@ export default function Card() {
                 <a href={`/posts/${slug}`}>
                     <div
                         key={slug}
-                        className="flex flex-col drop-shadow-2xl max-w-full xl:w-80 xl:h-[400px] rounded-[30px] bg-white items-center hover:transition duration-500 hover:scale-110"
+                        className="flex flex-col drop-shadow-2xl max-w-full xl:w-80 xl:h-[400px] md:w-72 md:h-[350px] rounded-[30px] bg-white items-center hover:transition duration-500 hover:scale-110"
                     >
-                        <div className="flex justify-center items-center mt-6 ml-6 mr-6 mb-6 w-72 h-44 sm:w-40 md:w-48 lg:w-72 xl:w-72 rounded-[15px]">
+                        <div className="flex justify-center items-center w-full h-48 sm:w-full mb-5 md:w-full lg:w-full xl:w-full rounded-[15px]">
                             <img
-                                className="rounded-[15px] lg:w-full lg:h-full md:w-full md:h-full sm:w-full sm:h-full"
+                                className="rounded-t-[15px] rounded-b-none lg:w-full lg:h-full md:w-full md:h-full sm:w-full sm:h-full"
                                 src={`/${frontmatter.socialImage}`}
                                 alt={frontmatter.title}
                             />
