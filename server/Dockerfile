@@ -6,6 +6,7 @@ WORKDIR /usr/src/app
 
 # Copy package.json และ package-lock.json เพื่อลด layer build
 COPY package*.json ./
+RUN npm install --include=dev
 
 # ติดตั้ง dependencies
 RUN npm install
@@ -13,11 +14,12 @@ RUN npm install
 # Copy โค้ดทั้งหมดเข้า container
 COPY . .
 
-# Build TypeScript โดยไม่ต้องติดตั้ง global
-RUN npx tsc
+# ติดตั้ง TypeScript (สำคัญ)
+RUN npm install -g typescript
 
 # เปิด port 4000
 EXPOSE 4000
 
+
 # สั่งให้ container รันแอป
-CMD ["npm", "start"]
+CMD ["node", "dist/index.js"]

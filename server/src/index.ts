@@ -8,7 +8,7 @@ const {readdirSync} = require('fs');
 const app = express();
 
 
-app.use(express());
+app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
 app.use(morgan('dev'));
