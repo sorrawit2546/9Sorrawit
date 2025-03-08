@@ -40,9 +40,8 @@ model positive_post {
   id        Int    @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  title     String   @db.VarChar(255)
-  content   String?
-  name      String
+  date      DateTime
+  content   String
   image     String?
   email     String?
 }
