@@ -6,7 +6,6 @@ WORKDIR /usr/src/app
 
 # Copy package.json และ package-lock.json เพื่อลด layer build
 COPY package*.json ./
-RUN npm install --include=dev
 
 # ติดตั้ง dependencies
 RUN npm install
@@ -22,4 +21,4 @@ EXPOSE 4000
 
 
 # สั่งให้ container รันแอป
-CMD ["node", "dist/index.js"]
+CMD ["npm", "run", "dev"]

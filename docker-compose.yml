@@ -17,7 +17,6 @@ services:
       - "4000:4000"
     volumes:
       - ./server:/usr/src/app
-      - /usr/src/app/node_modules
     environment:
       - NODE_ENV=development
       - DATABASE_URL=postgresql://myuser:mypassword@postgres:5432/mydatabase
