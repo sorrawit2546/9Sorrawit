@@ -7,6 +7,7 @@ import Bar from "@/components/bar";
 import Timeline from "@/components/timeline";
 import Footer from "@/components/footer";
 import Card from "@/components/card";
+import axios from "axios";
 
 export default function Home() {
     return (

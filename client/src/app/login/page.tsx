@@ -50,7 +50,7 @@ export default function page() {
         if (res.data.user.role === "ADMIN") {
             window.location.href = "/admin";
         } else {
-            window.location.href = "/user";
+            window.location.href = "/9note";
         }
     }
 
@@ -76,42 +76,46 @@ export default function page() {
         setUserInfo(null);
         alert("Logged out successfully!");
         window.location.href = "/";
-      };
+    };
 
     return (
         <div className='font-manrope font-bold'>
             <Header />
             {!token ? (
-            <div className="flex justify-self-center">
-                <form onSubmit={handleLogin}>
-                    <div className="flex flex-row w-[980px] h-[500px] shadow-2xl  rounded-xl space-x-20">
-                        <div className="flex w-[490px] h-full shadow-2xl rounded-xl justify-center items-center">
-                            <img className="w-[300px] h-[300px]" src="/logo9sorrawit.png" alt="" />
+                <div className="flex justify-self-center">
+                    <form onSubmit={handleLogin}>
+                        <div className="flex flex-row w-[980px] h-[500px] shadow-2xl  rounded-xl space-x-20">
+                            <div className="flex w-[490px] h-full shadow-2xl rounded-xl justify-center items-center">
+                                <img className="w-[300px] h-[300px]" src="/logo9sorrawit.png" alt="" />
+                            </div>
+                            <div className="flex flex-col justify-center items-start space-y-2">
+                                <div className="">
+                                    Email
+                                </div>
+                                <div className="flex flex-row-10">
+                                    <input className="h-10 pl-2  border-black rounded-lg shadow-lg" type="email" name="email" value={email} onChange={(e: any) => setEmail(e.target.value)} placeholder="example@gmail.com" />
+                                </div>
+                                <div>
+                                    Password
+                                </div>
+                                <div className="flex flex-row ">
+                                    <input className="h-10 pl-2  border-black rounded-lg shadow-lg" type="password" name="password" value={password} onChange={(e: any) => setPassword(e.target.value)} placeholder="Input password" />
+                                </div>
+                                <div className="flex justify-center items-center">
+                                    <button className="bg-white dark:bg-black dark:hover:hover:bg-sky-400  dark:text-white shadow-2xl rounded-3xl w-40 h-10 mt-5" type="submit">Login</button>
+                                </div>
+                            </div>
                         </div>
-                        <div className="flex flex-col justify-center items-start space-y-2">
-                            <div className="">
-                                Email
-                            </div>
-                            <div className="flex flex-row-10">
-                                <input className="h-10 pl-2  border-black rounded-lg shadow-lg" type="email" name="email" value={email} onChange={(e: any) => setEmail(e.target.value)} placeholder="example@gmail.com" />
-                            </div>
-                            <div>
-                                Password
-                            </div>
-                            <div className="flex flex-row ">
-                                <input className="h-10 pl-2  border-black rounded-lg shadow-lg" type="password" name="password" value={password} onChange={(e: any) => setPassword(e.target.value)} placeholder="Input password" />
-                            </div>
-                            <div className="flex justify-center items-center">
-                                <button className="bg-white dark:bg-black dark:hover:hover:bg-sky-400  dark:text-white shadow-2xl rounded-3xl w-40 h-10 mt-5" type="submit">Login</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            ):(
-                <div>
-                     <button onClick={handleLogout} className="bg-white dark:bg-black dark:hover:hover:bg-sky-400  dark:text-white shadow-2xl rounded-3xl w-40 h-10 mt-5" type="submit">Logout</button>
+                    </form>
                 </div>
+            ) : (
+                <div>
+                    <button onClick={handleLogout} className="bg-white dark:bg-black dark:hover:hover:bg-sky-400  dark:text-white shadow-2xl rounded-3xl w-40 h-10 mt-5" type="submit">Logout</button>
+                    <div>
+                        <span>Hello : </span>{userInfo?.user[0].name}
+                    </div>
+                </div>
+
             )}
         </div>
     )

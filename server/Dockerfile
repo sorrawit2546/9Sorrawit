@@ -8,17 +8,15 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # ติดตั้ง dependencies
-RUN npm install
+RUN npm install\
+        && npm install typescript -g
 
 # Copy โค้ดทั้งหมดเข้า container
 COPY . .
-
-# ติดตั้ง TypeScript (สำคัญ)
-RUN npm install -g typescript
 
 # เปิด port 4000
 EXPOSE 4000
 
 
 # สั่งให้ container รันแอป
-CMD ["npm", "run", "dev"]
+CMD ["node", "./dist/index.js"]

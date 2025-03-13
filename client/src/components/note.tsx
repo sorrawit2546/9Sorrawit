@@ -90,14 +90,6 @@ export default function Note() {
                                 <input type="date" value={date} onChange={(e: any) => handleDateChange(e.target.value)}
                                     className="bg-slate-100 rounded-[15px] h-[49px] w-[200px] text-center appearance-none px-4" />
                             </div>
-                            <div className='flex flex-row mt-5 space-x-5 bg-slate-100 rounded-[15px] h-[49px] w-[200px] items-center justify-center'>
-                                <input type="radio" name="choice" id="1" value="option1" />
-                                <label htmlFor="option1">5</label>
-                                <input type="radio" name="choice" id="2" value="option2" />
-                                <label htmlFor="option2">8</label>
-                                <input type="radio" name="choice" id="3" value="option3" />
-                                <label htmlFor="option3">10</label>
-                            </div>
                             <div>
                                 <input className='mt-5 pl-2 pr-2 pt-2 pb-2 bg-slate-100 rounded-[15px] h-[49px] ' value={email} onChange={(e: any) => setEmail(e.target.value)} type="email" name="" id="" placeholder='example@9note.com' />
                             </div>
@@ -138,12 +130,8 @@ export default function Note() {
                     </div>
                     <div>
                         <div className=''>
-                            <textarea className="mt-5 pl-3 pr-3 pt-3 pb-3 bg-slate-100 rounded-[15px]" value={content} onChange={(e: any) => setContent(e.target.value)} id="" cols="80" rows="4" placeholder='เรื่องเชิงบวกในวันนี้ของคุณมีอะไรบ้าง แชร์ให้เราฟังหน่อย :)
-                            เช่น 1.วันนี้ท้องฟ้าเป็นสีฟ้าสวยมาก ทำให้รู้สึกสดชื่นและมีพลังขึ้นมาทันที!'></textarea>
+                            <textarea className="mt-5 pl-3 pr-3 pt-3 pb-3 bg-slate-100 rounded-[15px]" value={content} onChange={(e: any) => setContent(e.target.value)} id="" cols="80" rows="4" placeholder='เรื่องเชิงบวกในวันนี้ของคุณมีอะไรบ้าง แชร์ให้เราฟังหน่อย :)'></textarea>
                         </div>
-                        <button type="submit" className="bg-blue-500 text-black p-2 rounded">
-                            Submit
-                        </button>
                     </div>
                     
 
