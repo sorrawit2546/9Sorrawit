@@ -20,6 +20,7 @@ model User {
   name    String?
   role    Role    @default(USER)
   posts    Post[]
+  positive_post   Positive_post[]
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
 }
@@ -36,7 +37,7 @@ model Post {
   authorId  Int
 }
 
-model positive_post {
+model Positive_post {
   id        Int    @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -44,6 +45,8 @@ model positive_post {
   content   String
   image     String?
   email     String?
+  userId    Int
+  user      User  @relation(fields: [userId], references: [id])
 }
 
 model Category {
