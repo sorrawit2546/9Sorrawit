@@ -12,7 +12,7 @@ export default function Banner() {
     }, []);
 
     return (
-        <div data-aos="fade-up" data-aos-duration="3000" className="font-manrope w-full  bg-gradient-to-r from-[#1B4D3E] to-[#ACE1AF] justify-self-center ">
+        <div data-aos="fade-up" data-aos-duration="3000" className="font-manrope w-full  bg-gradient-to-r from-[#F6EBE6] to-[#AEE1F9] justify-self-center ">
             <Header />
             <div className="max-w-full w-auto sm:pl-40 sm:pr-40 lg:w-6/6 2xl:w-6/6 pl-64 pr-64 pt-16 justify-self-center justify-center">
                 <label htmlFor="" className="max-w-full flex text-[48px]  font-semibold ">💬Hey, I’m 9Sorrawit Sangmanee</label>

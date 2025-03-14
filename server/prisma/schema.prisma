@@ -41,12 +41,11 @@ model Positive_post {
   id        Int    @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  date      DateTime
   content   String
   image     String?
   email     String?
-  userId    Int
-  user      User  @relation(fields: [userId], references: [id])
+  userId    Int?
+  user      User?  @relation(fields: [userId], references: [id])
 }
 
 model Category {

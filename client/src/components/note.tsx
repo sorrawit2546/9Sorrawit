@@ -13,11 +13,6 @@ export default function Note() {
     const [image, setImages] = useState<string[]>([]);
     const [content, setContent] = useState<string>('');
     const [email, setEmail] = useState<string>('');
-    const [date, setDate] = useState<string>('');
-
-    const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setDate(event.target.value)
-    }
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;
@@ -65,16 +60,19 @@ export default function Note() {
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
+        console.log(content);
+        console.log(image);
+        console.log(email);
+
         try {
             const res = await axios.post("http://localhost:4000/api/positivepost", {
                 content,
                 image,
                 email,
-                date
             });
             console.log(res.data);
         } catch (error) {
-
+            console.error("Error submitting form:", error); // แสดงข้อผิดพลาดในกรณีที่เกิดปัญหา
         }
 
     }
@@ -83,13 +81,9 @@ export default function Note() {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <div className='flex flex-col xl:max-w-4xl xl:w-[896px] xl:max-h-96 xl:h-[384px] bg-white drop-shadow-2xl rounded-[30px] items-center mt-5 dark:text-black'>
+                <div className='flex flex-col xl:max-w-4xl xl:w-[896px] xl:max-h-full xl:h-full bg-white drop-shadow-2xl rounded-[30px] items-center mt-5 dark:text-black'>
                     <div className='flex flex-row  items-center justify-center space-x-4'>
                         <div className='flex flex-col gap-1 mt-7'>
-                            <div className=' '>
-                                <input type="date" value={date} onChange={(e: any) => handleDateChange(e.target.value)}
-                                    className="bg-slate-100 rounded-[15px] h-[49px] w-[200px] text-center appearance-none px-4" />
-                            </div>
                             <div>
                                 <input className='mt-5 pl-2 pr-2 pt-2 pb-2 bg-slate-100 rounded-[15px] h-[49px] ' value={email} onChange={(e: any) => setEmail(e.target.value)} type="email" name="" id="" placeholder='example@9note.com' />
                             </div>
@@ -128,12 +122,16 @@ export default function Note() {
                         </div>
 
                     </div>
-                    <div>
+                    <div className='flex flex-col'>
                         <div className=''>
                             <textarea className="mt-5 pl-3 pr-3 pt-3 pb-3 bg-slate-100 rounded-[15px]" value={content} onChange={(e: any) => setContent(e.target.value)} id="" cols="80" rows="4" placeholder='เรื่องเชิงบวกในวันนี้ของคุณมีอะไรบ้าง แชร์ให้เราฟังหน่อย :)'></textarea>
                         </div>
+                        <div className='flex items-center justify-center mt-5'>
+                            <button type="submit" className='px-10 py-2 rounded-md bg-gray-600 text-white ' >
+                                Submit
+                            </button>
+                        </div>
                     </div>
-                    
 
                 </div>
             </form>
