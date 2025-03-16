@@ -1,9 +1,11 @@
 const express = require('express');
-import { Response , Request } from 'express';
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require("cors");
-const {readdirSync} = require('fs');
+const { readdirSync } = require('fs');
+const multer = require('multer');
+const path = require('path');
+
 
 const app = express();
 
@@ -16,8 +18,8 @@ app.use(morgan('dev'));
 const PORT = 4000;
 
 //app.use('/api' , require('./routes/auth'));
-readdirSync('./src/routes').map((item:string)=>app.use('/api',require('./routes/'+ item)));
+readdirSync('./src/routes').map((item: string) => app.use('/api', require('./routes/' + item)));
 
-app.listen(PORT , () => {
+app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 })

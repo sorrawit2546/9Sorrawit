@@ -15,7 +15,6 @@
   "dependencies": {
     "@prisma/client": "^6.2.1",
     "@types/bcrypt": "^5.0.2",
-    "@types/express": "^5.0.0",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
@@ -27,7 +26,9 @@
     "tsc": "^2.0.4"
   },
   "devDependencies": {
+    "@types/express": "^5.0.0",
     "@types/morgan": "^1.9.9",
+    "@types/multer": "^1.4.12",
     "prisma": "^6.2.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.2"

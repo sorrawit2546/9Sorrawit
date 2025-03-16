@@ -20,23 +20,6 @@ export default function Footer() {
                     <div className='font-white text-3xl font-bold dark:text-white text-center'>
                         <label htmlFor="">Copyright {dateYear} — 9Sorrawit. All rights reserved.</label>
                     </div>
-                    <div className='flex gap-[20px] justify-center'>
-                        <img
-                            className="w-[80px] lg:w-[100px] h-[80px] lg:h-[100px] rounded-[50px] border-[2px]"
-                            src="https://static.vecteezy.com/system/resources/previews/018/930/747/non_2x/youtube-logo-youtube-icon-transparent-free-png.png"
-                            alt="logowebsite"
-                        />
-                        <img
-                            className="w-[80px] lg:w-[100px] h-[80px] lg:h-[100px] rounded-[50px] border-[2px]"
-                            src="https://img.icons8.com/m_rounded/512/facebook-new.png"
-                            alt="logowebsite"
-                        />
-                        <img
-                            className="w-[80px] lg:w-[100px] h-[80px] lg:h-[100px] rounded-[50px] border-[2px]"
-                            src="/logo9sorrawit.png"
-                            alt="logowebsite"
-                        />
-                    </div>
                 </div>
             </div>
         </div>

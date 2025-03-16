@@ -101,7 +101,7 @@ export default function Header() {
                     Home
                 </a>
                 <a
-                    href="/9note"
+                    href="/note"
                     onClick={(e) => isMounted && handleNavClick('/github', e)}
                     className={`px-6 py-2 rounded-[50px] transition-all duration-300 
                         ${isMounted && currentPath === '/github'
@@ -111,14 +111,14 @@ export default function Header() {
                     Note
                 </a>
                 <a
-                    href="/design"
+                    href="/resource"
                     onClick={(e) => isMounted && handleNavClick('/design', e)}
                     className={`px-6 py-2 rounded-[50px] transition-all duration-300 
                         ${isMounted && currentPath === '/design'
                             ? 'bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] text-black '
                             : 'dark:text-white hover:bg-gradient-to-r from-[#B2FF00] to-[#FDDCDC] hover:bg-opacity-50'}`}
                 >
-                    Desgin
+                    Resource
                 </a>
                 <a
                     href="/about"
