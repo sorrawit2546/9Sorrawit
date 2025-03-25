@@ -4,7 +4,7 @@ import * as path from 'path';
 const router = express.Router();
 
 // Import controller
-const { getPositiveposts, createPositivepost } = require('../controllers/positivepost_controller');
+const { getPositiveposts, createPositivepost , deletePositivePost } = require('../controllers/positivepost_controller');
 
 // Configure multer for this route
 const storage = multer.diskStorage({
@@ -35,5 +35,6 @@ const upload = multer({
 // Define the route with multer middleware
 router.post('/positivepost', upload.array('images', 5), createPositivepost);
 router.get('/getpositiveposts', getPositiveposts);
+router.delete('/positivepost/:id' , deletePositivePost);
 
 module.exports = router;

@@ -6,11 +6,14 @@ import { useState } from "react";
 import Note_box from "@/components/note";
 import Header from "@/components/header";
 import axios from "axios";
+import { Button } from "@/components/ui/button";
 
 
 export default function About() {
   const [token, setToken] = useState<string | null>(null);
   const [userInfo, setUserInfo] = useState<Users | null>(null); // เก็บข้อมูลผู้ใช้
+  const [positivePost, setPositivePost] = useState<PositivePost[] | null>([]);
+
 
   interface Users {
     name: string,
@@ -19,6 +22,17 @@ export default function About() {
     role: "ADMIN" | "USER";
   }
 
+  interface PositivePost {
+    id: number,
+    createdAt: string,
+    updated_at: string,
+    content: string,
+    image: string[],
+    email: string,
+    userId: string,
+  }
+
+
 
   const infoSectionRef = useRef<HTMLDivElement>(null);
   const [showPopup, setShowPopup] = useState(false);
@@ -26,6 +40,19 @@ export default function About() {
   const handleButtonClick = () => {
     setShowPopup(true);
   };
+
+  const handleDeletePositive = async (id: number) => {
+    try {
+      const response = await axios.delete(`http://localhost:4000/api/deletepositivepost/${id}`);
+      if (response.status === 200) {
+        console.log("Delete Complete:", response.data);
+      } else {
+        console.warn("Unexpected response:", response);
+      }
+    } catch (error) {
+      console.error("Error deleting positive note:", error);
+    }
+  }
 
   const handleClosePopup = () => {
     setShowPopup(false);
@@ -54,11 +81,24 @@ export default function About() {
       });
       // Handle the response data
       setUserInfo(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error("Error fetching user profile:", error);
     }
   };
+
+
+  useEffect(() => {
+    const fetchPositiveNote = async () => {
+      try {
+        const res = await axios.get("http://localhost:4000/api/getpositiveposts");
+        setPositivePost(res.data);
+        console.log(res.data)
+      } catch (error) {
+        console.error("Error fetching positive note:", error);
+      }
+    }
+    fetchPositiveNote()
+  }, []);
 
 
   return (
@@ -151,6 +191,41 @@ export default function About() {
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
           <Note_box />
         </motion.div>
+
+        <div>
+          {positivePost?.map((post) => (
+            <div key={post.id}>
+              <div className="xl:w-[1000px] xl:h-full px-6 py-6 bg-white drop-shadow-2xl rounded-[30px] items-center mt-5 mb-5 dark:text-black">
+                <div>
+                  <p className="font-bold text-[20px]">🌃 เรื่องราวในวันที่ : {post.createdAt.substring(0, 10)}</p>
+                </div>
+                <p className="py-2">✉️ {post.email}</p>
+                <p className="font-bold text-[20px] py-2">{post.content}</p>
+
+                <div style={{ display: 'flex', overflowX: 'auto', whiteSpace: 'nowrap' }}>
+                  {Array.isArray(post.image) && post.image.map((imagePost, index) => (
+                    <img
+                      key={index}
+                      src={`http://localhost:4000/${imagePost}`}
+                      alt={`Post Image ${index}`}
+                      style={{
+                        width: '200px', // กำหนดขนาดให้เหมาะสม
+                        marginRight: '10px', // ให้มีระยะห่างระหว่างภาพ
+                        objectFit: 'cover' // เพื่อให้ภาพไม่ยืด
+                      }} className="rounded-lg"
+                    />
+                  ))}
+                </div>
+                <div>
+                  <Button variant="destructive" onClick={() => handleDeletePositive(post.id)}>
+                    Delete
+                  </Button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </div>
 

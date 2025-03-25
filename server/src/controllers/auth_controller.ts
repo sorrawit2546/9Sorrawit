@@ -4,41 +4,40 @@ const jwt = require('jsonwebtoken');
 import bcrypt from "bcrypt";
 import { token } from "morgan";
 
-exports.getUser = async (req:any , res:any) => {
+exports.getUser = async (req: any, res: any) => {
     const user = await prisma.user.findMany()
-        res.json({
-           user
-        })
+    res.json({
+        user
+    })
 };
 
-exports.register = async (req:any , res:any)=>{
+exports.register = async (req: any, res: any) => {
     try {
-        const {email , name ,  password} = req.body;
+        const { email, name, password } = req.body;
         //Validate
         if (!email) {
             return res.status(400).json({
-                message:"Invalid Email."
+                message: "Invalid Email."
             })
         }
         if (!password) {
             return res.status(400).json({
-                message:"Invalid Password."
+                message: "Invalid Password."
             })
         }
-        //Check email Already
-        // const user = prisma.user.findUnique({
-        //     select: {
-        //         email:true
-        //     },
-        // },
-        // res.json({message:"email already use"}))
+
+        // ✅ ตรวจสอบว่ามี email ซ้ำหรือไม่
+        const existingUser = await prisma.user.findUnique({ where: { email } });
+        if (existingUser) {
+            return res.status(400).json({ message: "Email is already in use!" });
+        }
 
         //Hash Password
         const salt = await bcrypt.genSalt(10)
-        const hashPassword = await bcrypt.hash(password,salt)
+        const hashPassword = await bcrypt.hash(password, salt)
         //Register
         const newUser = await prisma.user.create({
-            data:{
+            data: {
                 email: email,
                 name: name,
                 password: hashPassword,
@@ -48,28 +47,28 @@ exports.register = async (req:any , res:any)=>{
             //     id:true,
             //     email:true 
             // }
-        }) 
+        })
         res.json({
-            message:"Send Complete" , email , name
-        }); 
+            message: "Send Complete", email, name
+        });
     } catch (error) {
         console.log(error);
-        res.json({message:"Error"}).status(500);
+        res.json({ message: "Error" }).status(500);
     }
 }
 
-exports.login = async (req:any , res:any)=>{
+exports.login = async (req: any, res: any) => {
     try {
-        const { email , password } = req.body;
+        const { email, password } = req.body;
         if (!email) {
-            res.json({message: "Not found Email!"}).status(400);
-        }  
+            res.json({ message: "Not found Email!" }).status(400);
+        }
         if (!password) {
-            res.json({message: "Not found Password!"}).status(400);
+            res.json({ message: "Not found Password!" }).status(400);
         }
 
         const user = await prisma.user.findUnique({
-            where:{
+            where: {
                 email: email
             }
         })
@@ -80,7 +79,7 @@ exports.login = async (req:any , res:any)=>{
         }
 
         //Compare Password
-        const isMatch = await bcrypt.compare(password,user.password)
+        const isMatch = await bcrypt.compare(password, user.password)
         if (!isMatch) {
             res.json({
                 message: "Invalid Password"
@@ -88,7 +87,7 @@ exports.login = async (req:any , res:any)=>{
         }
 
         const payload = {
-            user:{
+            user: {
                 id: user.id,
                 email: user.email,
                 name: user.name,
@@ -96,15 +95,15 @@ exports.login = async (req:any , res:any)=>{
             },
         }
 
-        const token = jwt.sign(payload,'9notesecret',{
-            expiresIn:'1d'
+        const token = jwt.sign(payload, '9notesecret', {
+            expiresIn: '1d'
         })
 
         res.json({
-            user:payload.user,
-            token:token
+            user: payload.user,
+            token: token
         })
     } catch (error) {
-        
-    }  
+
+    }
 };

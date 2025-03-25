@@ -101,7 +101,7 @@ export default function Note() {
                         'Content-Type': 'multipart/form-data'
                     }
                 });
-
+                
                 console.log("Post submitted successfully:", res.data);
 
                 // Reset form after successful submission
