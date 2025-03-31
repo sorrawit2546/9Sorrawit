@@ -19,4 +19,4 @@ EXPOSE 4000
 
 
 # สั่งให้ container รันแอป
-CMD ["node", "./dist/index.js"]
+CMD ["node", "./src/index.js"]
