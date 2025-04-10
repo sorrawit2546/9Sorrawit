@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 //import controller
-const {register} = require('../controllers/auth_controller');
+import {register} from '../controllers/auth_controller';
 const {login , getUser} = require('../controllers/auth_controller');
 
 router.post('/register' , register); // Create a new route for the controller

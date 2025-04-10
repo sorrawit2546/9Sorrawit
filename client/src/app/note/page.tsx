@@ -216,7 +216,7 @@ export default function About() {
                     />
                   ))}
                 </div>
-                <div>
+                <div className="mt-2">
                   <Button variant="destructive" onClick={() => handleDeletePositive(post.id)}>
                     Delete
                   </Button>

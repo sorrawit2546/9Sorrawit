@@ -11,7 +11,7 @@ exports.getUser = async (req: any, res: any) => {
     })
 };
 
-exports.register = async (req: any, res: any) => {
+export const register = async (req: any, res: any) => {
     try {
         const { email, name, password } = req.body;
         //Validate
