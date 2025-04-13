@@ -43,9 +43,11 @@ export default function About() {
 
   const handleDeletePositive = async (id: number) => {
     try {
-      const response = await axios.delete(`http://localhost:4000/api/deletepositivepost/${id}`);
+      const response = await axios.delete(`http://localhost:4000/api/positivepost/${id}`);
       if (response.status === 200) {
         console.log("Delete Complete:", response.data);
+        setPositivePost((prev) => prev?.filter((post) => post.id !== id) ?? []);
+        //window.location.reload();
       } else {
         console.warn("Unexpected response:", response);
       }
@@ -97,7 +99,8 @@ export default function About() {
         console.error("Error fetching positive note:", error);
       }
     }
-    fetchPositiveNote()
+
+    fetchPositiveNote();
   }, []);
 
 

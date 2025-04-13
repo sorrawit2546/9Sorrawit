@@ -1,7 +1,7 @@
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 const jwt = require('jsonwebtoken');
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { token } from "morgan";
 
 exports.getUser = async (req: any, res: any) => {

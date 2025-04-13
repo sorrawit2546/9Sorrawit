@@ -14,11 +14,14 @@ app.use(morgan('dev'));
 
 const PORT = 4000;
 
-//app.use('/api' , require('./routes/auth'));
-readdirSync('./src/routes').map((item: string) => app.use('/api', require('./routes/' + item)));
+const routesPath = path.join(__dirname, 'routes');
+readdirSync(routesPath).map((file: string) => {
+    const routes = require(path.join(routesPath, file));
+    app.use('/api', routes);
+});
 
 app.use('/uploads', express.static('uploads'));
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0' ,() => {
     console.log(`Server is running on port ${PORT}`);
 })

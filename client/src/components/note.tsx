@@ -96,13 +96,14 @@ export default function Note() {
                     formData.append('images', file); // 'images' will be the field name in multer
                 });
 
-                const res = await axios.post("http://localhost:4000/api/positivepost", formData, {
+                const res = await axios.post("/api/getpositiveposts", formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
                 });
                 
                 console.log("Post submitted successfully:", res.data);
+                window.location.reload();
 
                 // Reset form after successful submission
                 setContent('');

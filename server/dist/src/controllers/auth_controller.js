@@ -12,17 +12,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.register = void 0;
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const jwt = require('jsonwebtoken');
-const bcrypt_1 = __importDefault(require("bcrypt"));
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
 exports.getUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield prisma.user.findMany();
     res.json({
         user
     });
 });
-exports.register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email, name, password } = req.body;
         //Validate
@@ -42,8 +43,8 @@ exports.register = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             return res.status(400).json({ message: "Email is already in use!" });
         }
         //Hash Password
-        const salt = yield bcrypt_1.default.genSalt(10);
-        const hashPassword = yield bcrypt_1.default.hash(password, salt);
+        const salt = yield bcryptjs_1.default.genSalt(10);
+        const hashPassword = yield bcryptjs_1.default.hash(password, salt);
         //Register
         const newUser = yield prisma.user.create({
             data: {
@@ -66,6 +67,7 @@ exports.register = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         res.json({ message: "Error" }).status(500);
     }
 });
+exports.register = register;
 exports.login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { email, password } = req.body;
@@ -86,7 +88,7 @@ exports.login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             });
         }
         //Compare Password
-        const isMatch = yield bcrypt_1.default.compare(password, user.password);
+        const isMatch = yield bcryptjs_1.default.compare(password, user.password);
         if (!isMatch) {
             res.json({
                 message: "Invalid Password"

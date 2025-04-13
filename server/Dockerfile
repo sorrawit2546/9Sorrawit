@@ -8,15 +8,24 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # ติดตั้ง dependencies
-RUN npm install\
-        && npm install typescript -g
+RUN npm install
+
+
+# Copy โฟลเดอร์ prisma รวมถึง schema.prisma ไปยัง container
+COPY prisma ./prisma
+
+
+# รัน Prisma generate เพื่อสร้าง Prisma Client สำหรับสภาพแวดล้อมที่กำหนดใน schema.prisma
+RUN npx prisma generate
 
 # Copy โค้ดทั้งหมดเข้า container
 COPY . .
+
+RUN npm run build
 
 # เปิด port 4000
 EXPOSE 4000
 
 
 # สั่งให้ container รันแอป
-CMD ["node", "./src/index.js"]
+CMD ["node", "dist/src/index.js"]
