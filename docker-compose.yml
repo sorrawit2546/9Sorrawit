@@ -40,9 +40,20 @@ services:
       PGADMIN_DEFAULT_EMAIL: 9sorrawit@admin.com
       PGADMIN_DEFAULT_PASSWORD: root
     ports:
-      - "5050:80"
+      - "5050:5050"
     depends_on:
       - postgres
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-proxy
+    ports:
+      - "8080:80"
+    volumes:
+      - ./server/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - frontend
+      - server
 
 volumes:
   postgres-data:
