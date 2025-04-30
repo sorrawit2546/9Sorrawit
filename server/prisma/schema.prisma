@@ -47,6 +47,8 @@ model Positive_post {
   email     String?
   userId    Int?
   user      User?  @relation(fields: [userId], references: [id])
+
+  @@map("positive_post")
 }
 
 model Category {

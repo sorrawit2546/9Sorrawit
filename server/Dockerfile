@@ -10,22 +10,24 @@ COPY package*.json ./
 # ติดตั้ง dependencies
 RUN npm install
 
-
 # Copy โฟลเดอร์ prisma รวมถึง schema.prisma ไปยัง container
 COPY prisma ./prisma
-
-
-# รัน Prisma generate เพื่อสร้าง Prisma Client สำหรับสภาพแวดล้อมที่กำหนดใน schema.prisma
-RUN npx prisma generate
 
 # Copy โค้ดทั้งหมดเข้า container
 COPY . .
 
+# สร้าง Prisma Client
+RUN npx prisma generate
+
+# Build TypeScript เป็น JavaScript
 RUN npm run build
+
+# Copy entrypoint.sh และให้ permission รัน
+COPY entrypoint.sh ./
+RUN chmod +x ./entrypoint.sh
 
 # เปิด port 4000
 EXPOSE 4000
 
-
-# สั่งให้ container รันแอป
-CMD ["node", "dist/src/index.js"]
+# รัน entrypoint.sh แทนการเรียก node โดยตรง
+CMD ["./entrypoint.sh"]
