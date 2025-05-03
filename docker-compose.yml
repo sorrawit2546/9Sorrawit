@@ -2,6 +2,10 @@
 services:
   frontend:
     # ... (ส่วนอื่นๆ ของ frontend) ...
+    build:
+      context: ./client
+    environment:
+      NODE_ENV: production
 
   server:
     build:
