@@ -8,10 +8,10 @@ RUN npm install
 
 COPY . .
 
-# *** เพิ่ม: สั่ง Build Production App ***
-# (คำสั่งนี้จะสร้างโฟลเดอร์ .next ที่จำเป็นสำหรับ next start)
-RUN npm run build
+# # *** เพิ่ม: สั่ง Build Production App ***
+# # (คำสั่งนี้จะสร้างโฟลเดอร์ .next ที่จำเป็นสำหรับ next start)
+# RUN npm run build
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["npm", "run" , "dev"]
