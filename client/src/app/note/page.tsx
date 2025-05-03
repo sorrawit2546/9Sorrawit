@@ -43,7 +43,7 @@ export default function About() {
 
   const handleDeletePositive = async (id: number) => {
     try {
-      const response = await axios.delete(`http://localhost:4000/api/positivepost/${id}`);
+      const response = await axios.delete(`${process.env.NEXT_PUBLIC_API_BASE_URL}/positivepost/${id}`);
       if (response.status === 200) {
         console.log("Delete Complete:", response.data);
         setPositivePost((prev) => prev?.filter((post) => post.id !== id) ?? []);
@@ -76,7 +76,7 @@ export default function About() {
 
   const fetchUserProfile = async (authToken: string) => {
     try {
-      const response = await axios.get<Users>("http://localhost:4000/api/users", {
+      const response = await axios.get<Users>(`${process.env.NEXT_PUBLIC_API_BASE_URL}/users`, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -92,7 +92,7 @@ export default function About() {
   useEffect(() => {
     const fetchPositiveNote = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/api/getpositiveposts");
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/getpositiveposts`); //
         setPositivePost(res.data);
         console.log(res.data)
       } catch (error) {

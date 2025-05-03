@@ -96,7 +96,7 @@ export default function Note() {
                     formData.append('images', file); // 'images' will be the field name in multer
                 });
 
-                const res = await axios.post("http://localhost:4000/api/positivepost", formData, {
+                const res = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/positivepost`, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
