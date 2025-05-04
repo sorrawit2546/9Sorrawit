@@ -209,7 +209,7 @@ export default function About() {
                   {Array.isArray(post.image) && post.image.map((imagePost, index) => (
                     <img
                       key={index}
-                      src={`/${imagePost}`}
+                      src={`http://localhost:4000/${imagePost}`}
                       alt={`Post Image ${index}`}
                       style={{
                         width: '200px', // กำหนดขนาดให้เหมาะสม
@@ -219,11 +219,11 @@ export default function About() {
                     />
                   ))}
                 </div>
-                <div className="mt-2">
+                {/* <div className="mt-2">
                   <Button variant="destructive" onClick={() => handleDeletePositive(post.id)}>
                     Delete
                   </Button>
-                </div>
+                </div> */}
               </div>
             </div>
           ))}

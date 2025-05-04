@@ -10,7 +10,7 @@ export default function Footer() {
                     <div className="flex items-center justify-center gap-[15px]">
                         <img
                             className="w-[80px] lg:w-[100px] h-[80px] lg:h-[100px]"
-                            src="/newlogo_website.PNG"
+                            src="/newlog_website.PNG"
                             alt="logowebsite"
                         />
                         <label className="font-manrope font-semibold text-[48px] bg-gradient-to-r from-[#303030] to-[#0051ff] dark:bg-gradient-to-r from-[#ffffff] to-[#0051ff] inline-block text-transparent bg-clip-text">

@@ -82,7 +82,7 @@ export default function Header() {
             <div className=" max-w-full w-96 mb:flex-row sm:flex-row  md:flex-row flex items-center justify-center gap-[15px]">
                 <img
                     className="w-[80px] lg:w-[60px] h-fulllg:h-[60px]"
-                    src="/newlogo_website.PNG"
+                    src="/newlog_website.PNG"
                     alt="logowebsite"
                 />
                 <label className="font-manrope font-semibold xl:pr-32 text-[48px] md:text-6xl lg:text-6xl bg-gradient-to-r from-[#C800FF] to-[#410097] inline-block text-transparent bg-clip-text">
