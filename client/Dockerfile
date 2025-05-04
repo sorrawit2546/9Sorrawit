@@ -10,7 +10,7 @@ COPY . .
 
 # # *** เพิ่ม: สั่ง Build Production App ***
 # # (คำสั่งนี้จะสร้างโฟลเดอร์ .next ที่จำเป็นสำหรับ next start)
-# RUN npm run build
+#RUN npm run build
 
 EXPOSE 3000
 

@@ -17,8 +17,8 @@ const PORT = 4000;
 const routesPath = path.join(__dirname, 'routes');
 readdirSync(routesPath).map((file: string) => {
     const routes = require(path.join(routesPath, file));
-    //app.use('/api', routes);
-    app.use('/',routes);
+    app.use('/api', routes);
+   // app.use('/',routes);
 });
 
 app.use('/uploads', express.static('uploads'));
