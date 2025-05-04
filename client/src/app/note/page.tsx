@@ -7,6 +7,7 @@ import Note_box from "@/components/note";
 import Header from "@/components/header";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
+import Footer from "@/components/footer";
 
 
 export default function About() {
@@ -230,6 +231,7 @@ export default function About() {
         </div>
 
       </div>
+      <Footer />
     </div>
 
   );
