@@ -209,7 +209,7 @@ export default function About() {
                   {Array.isArray(post.image) && post.image.map((imagePost, index) => (
                     <img
                       key={index}
-                      src={`http://localhost:4000/${imagePost}`}
+                      src={`/${imagePost}`}
                       alt={`Post Image ${index}`}
                       style={{
                         width: '200px', // กำหนดขนาดให้เหมาะสม
