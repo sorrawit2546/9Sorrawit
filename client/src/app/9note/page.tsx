@@ -32,7 +32,7 @@ export default function About() {
       <div className="flex font-manrope items-center justify-center">
         <div className="flex flex-col text-[50px] font-bold items-center space-y-4">
           <h1>9Note</h1>
-          <h1>3 Lines of positive notes</h1>
+          <h1 className="">3 Lines of positive notes</h1>
           <div className="flex flex-row gap-5"> 
           <div className="flex flex-row text-[30px]">
             <motion.button

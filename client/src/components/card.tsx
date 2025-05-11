@@ -25,12 +25,12 @@ export default function Card() {
     const posts = getPostMetadata();
 
     return (
-        <div className="grid grid-cols-3 gap-5 mt-5 mb-5 dark:text-black">
+        <div className="grid grid-cols-3 gap-5 mt-5 mb-5 mb:grid-cols-1 mb:gap-y-10 dark:text-black">
             {posts.map(({ slug, frontmatter }) => (
                 <a href={`/posts/${slug}`}>
                     <div
                         key={slug}
-                        className="flex flex-col drop-shadow-2xl max-w-full xl:w-80 xl:h-[400px] md:w-72 md:h-[350px] rounded-[30px] bg-white items-center hover:transition duration-500 hover:scale-110"
+                        className="flex flex-col drop-shadow-2xl max-w-full xl:w-80 xl:h-[400px] md:w-72 md:h-[350px] mb:w-60  rounded-[30px] bg-white items-center hover:transition duration-500 hover:scale-110"
                     >
                         <div className="flex justify-center items-center w-full h-48 sm:w-full mb-5 md:w-full lg:w-full xl:w-full rounded-[15px]">
                             <img
@@ -39,8 +39,8 @@ export default function Card() {
                                 alt={frontmatter.title}
                             />
                         </div>
-                        <div className="flex flex-col">
-                            <div className="flex gap-2 mb-3 ml-3">
+                        <div className="flex flex-col mb:mb-3">
+                            <div className="flex gap-2 mb-3 ml-3 mb:gap-3 mb:mt-3">
                                 {frontmatter.tags.map((tag: string, index: number) => (
                                     <span key={index} className={badgeVariants({ variant: "default" })}>
                                         {tag}
@@ -52,7 +52,7 @@ export default function Card() {
                                     📅{frontmatter.date}
                                 </div>
                             </div>
-                            <div className="text-2xl pl-3 pr-3 h-15 pt-3 ">
+                            <div className="text-2xl pl-3 pr-3 h-15 pt-3 mb:text-xl">
                                 {frontmatter.title}
                             </div>
                         </div>

@@ -10,7 +10,7 @@ export default {
   theme: {
   	extend: {
 		screens: {
-			'mb': '320px',
+			'mb': '390px',
 			// => @media (min-width: 640px) { ... }
 		  },
 		fontFamily:{
