@@ -6,8 +6,8 @@ export default function Footer() {
     return (
         <div className="max-w-full w-full h-auto flex items-center justify-self-center justify-center rounded-t-[50px] mt-[20px] font-manrope space-x-[85px]">
             <div className='pt-11 pb-11'>
-                <div className='space-y-10'>
-                    <div className="flex items-center justify-center gap-[15px]">
+                <div className='space-y-5'>
+                    <div className="flex items-center justify-center gap-[10px]">
                         <img
                             className="w-[80px] lg:w-[100px] h-[80px] lg:h-[100px]"
                             src="/newlog_website.PNG"
@@ -18,7 +18,7 @@ export default function Footer() {
                         </label>
                     </div>
                     <div className='font-white text-3xl font-bold dark:text-white text-center'>
-                        <label htmlFor="">Copyright {dateYear} — 9Sorrawit. All rights reserved.</label>
+                        <label htmlFor="">Copyright {dateYear} — ninesorrawit. All rights reserved.</label>
                     </div>
                 </div>
             </div>

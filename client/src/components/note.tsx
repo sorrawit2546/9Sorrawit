@@ -124,7 +124,7 @@ export default function Note() {
                 <div className='flex flex-col xl:max-w-4xl xl:w-[896px] xl:max-h-full xl:h-full mb:w-[300px] bg-white drop-shadow-2xl rounded-[30px] items-center mt-5 mb-5 dark:text-black'>
                     <div className='flex flex-col items-center justify-center space-x-4'>
                         <div
-                            className="w-[700px] h-60 mb:w-[250px] flex flex-col items-center justify-center border-2 border-dashed border-gray-400 rounded-lg bg-white p-4 text-gray-500 cursor-pointer transition hover:border-blue-500 hover:bg-blue-50 mt-7"
+                            className="xl:w-[700px] lg:w-[700px] h-60 mb:w-[250px] flex flex-col items-center justify-center border-2 border-dashed border-gray-400 rounded-lg bg-white p-4 text-gray-500 cursor-pointer transition hover:border-blue-500 hover:bg-blue-50 mt-7"
                             onClick={() => document.getElementById("fileInput")?.click()}
                             onDragOver={(e) => e.preventDefault()}
                             onDrop={handleDrop}
@@ -172,7 +172,7 @@ export default function Note() {
                     <div className='flex flex-col'>
                         <div className='px-5'>
                             <textarea
-                                className="mb:w-[250px] mt-5 pl-3 pr-3 pt-3 pb-3 bg-slate-100 rounded-[15px]"
+                                className="xl:w-[700px] lg:w-[700px] mb:w-[250px] mt-5 pl-3 pr-3 pt-3 pb-3 bg-slate-100 rounded-[15px]"
                                 value={content}
                                 onChange={(e) => setContent(e.target.value)}
                                 onBlur={handleBlurContent}

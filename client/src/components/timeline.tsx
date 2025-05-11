@@ -8,7 +8,7 @@ export default function Timeline() {
             <div className='text-2xl font-kanit'>
                 <div>บันทึกเรื่องราวที่สนใจ เกี่ยวกับการพัฒนาเว็บไซต์ <br /> Coding, Technology, Node.js, React.js,...</div>
             </div>
-            <div className='flex flex-row space-x-5 mb:flex-col'>
+            <div className='flex xl:flex-row lg:flex-row space-x-5 mb:flex-col mb:justify-center mb:items-center'>
                 <motion.div whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }} className='flex xl:w-80 justify-center text-2xl font-bold mt-6  rounded-[15px] bg-[#e6e6e6] w-40 h-14 '>
                     <div className='flex items-center pr-2'>

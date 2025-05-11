@@ -109,10 +109,10 @@ export default function About() {
     <div className="xl:w-full  xl:space-y-32 dark:bg-zinc-900 dark:text-white">
       <Header />
       <div className="flex font-manrope  items-center justify-center">
-        <div className="flex flex-col text-[50px] mb:text-[30px]  font-bold items-center space-y-4">
+        <div className="flex flex-col lg:text-[50px] mb:text-[30px]  font-bold items-center space-y-4">
           <h1 className="">Positive Note</h1>
           <h1>3 Lines of positive notes</h1>
-          <div className="flex flex-row mb:flex mb:flex-col mb:justify-center mb:items-center gap-5 ">
+          <div className="xl:flex xl:flex-row lg:flex lg:flex-row mb:flex mb:flex-col mb:justify-center mb:items-center gap-5 ">
             <div className="flex flex-row  text-[30px]">
               <motion.button
                 whileHover={{ scale: 1.1 }}
@@ -166,7 +166,7 @@ export default function About() {
           transition={{ duration: 1.2, ease: "easeInOut" }}
           className="xl:mt-24 flex text-[40px]"
         >
-          <h1 className="xl:max-w-4xl mb:text-[35px] mb:ml-3  mb:mr-3 mb:mt-3 font-bold text-center ">
+          <h1 className="xl:max-w-4xl xl:text-[50px] lg:text-[50px] mb:text-[35px] mb:ml-3  mb:mr-3 mb:mt-3 font-bold text-center ">
             Theory from Dr. Zion Kabasawa. <br /> It talks about harvesting happiness each day through taking 3 lines of notes.
           </h1>
         </motion.div>

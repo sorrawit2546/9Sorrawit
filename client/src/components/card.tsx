@@ -25,7 +25,7 @@ export default function Card() {
     const posts = getPostMetadata();
 
     return (
-        <div className="grid grid-cols-3 gap-5 mt-5 mb-5 mb:grid-cols-1 mb:gap-y-10 dark:text-black">
+        <div className="grid xl:grid-cols-3 lg:grid-cols-3 xl:gap-5 xl:mt-5 xl:mb-5 lg:gap-5 lg:mt-5 lg:mb-5 mb:grid-cols-1 mb:gap-y-10 dark:text-black">
             {posts.map(({ slug, frontmatter }) => (
                 <a href={`/posts/${slug}`}>
                     <div
@@ -40,7 +40,7 @@ export default function Card() {
                             />
                         </div>
                         <div className="flex flex-col mb:mb-3">
-                            <div className="flex gap-2 mb-3 ml-3 mb:gap-3 mb:mt-3">
+                            <div className="flex xl:gap-2 xl:mb-3 xl:ml-3 lg:gap-2 lg:mb-3 lg:ml-3 mb:gap-3 mb:mt-3 mb:mb-2 mb:ml-3">
                                 {frontmatter.tags.map((tag: string, index: number) => (
                                     <span key={index} className={badgeVariants({ variant: "default" })}>
                                         {tag}
@@ -52,7 +52,7 @@ export default function Card() {
                                     📅{frontmatter.date}
                                 </div>
                             </div>
-                            <div className="text-2xl pl-3 pr-3 h-15 pt-3 mb:text-xl">
+                            <div className="xl:text-2xl lg:text-2xl pl-3 pr-3 h-15 pt-3 mb:text-xl">
                                 {frontmatter.title}
                             </div>
                         </div>
