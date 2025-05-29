@@ -6,6 +6,7 @@ import "@/styles/globals.css";
 import { Interface } from 'readline';
 import axios from 'axios';
 import Link from 'next/link';
+import Footer from '@/components/footer';
 
 export default function page() {
     interface Users {
@@ -50,7 +51,7 @@ export default function page() {
         if (res.data.user.role === "ADMIN") {
             window.location.href = "/admin";
         } else {
-            window.location.href = "/9note";
+            window.location.href = "/notedot";
         }
     }
 
@@ -79,14 +80,14 @@ export default function page() {
     };
 
     return (
-        <div className='font-manrope font-bold'>
+        <div className='font-manrope font-bold bg-white dark:bg-black'>
             <Header />
             {!token ? (
-                <div className="flex justify-self-center">
+                <div className="flex justify-self-center dark:bg-gray-200  rounded-xl">
                     <form onSubmit={handleLogin}>
-                        <div className="flex flex-row w-[980px] h-[500px] shadow-2xl  rounded-xl space-x-20">
+                        <div className="flex flex-row w-[980px] h-[500px] shadow-2xl  rounded-xl space-x-20 ">
                             <div className="flex w-[490px] h-full shadow-2xl rounded-xl justify-center items-center">
-                                <img className="w-[300px] h-[300px]" src="/logo9sorrawit.png" alt="" />
+                                <img className="w-[300px] h-[300px]" src="/newlog_website.png" alt="" />
                             </div>
                             <div className="flex flex-col justify-center items-start space-y-2">
                                 <div className="">
@@ -117,6 +118,7 @@ export default function page() {
                 </div>
 
             )}
+            <Footer />
         </div>
     )
 }

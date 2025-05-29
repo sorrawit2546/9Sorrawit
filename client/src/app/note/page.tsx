@@ -93,7 +93,7 @@ export default function About() {
   useEffect(() => {
     const fetchPositiveNote = async () => {
       try {
-        const res = await axios.get(`api/getpositiveposts`); //
+        const res = await axios.get(`http://localhost:4000/api/getpositiveposts`); //
         setPositivePost(res.data);
         console.log(res.data)
       } catch (error) {

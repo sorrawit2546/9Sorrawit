@@ -11,7 +11,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgresql://myuser:mypassword@localhost:5432/sorrawit_db"
 }
 
 model User {
@@ -54,6 +54,34 @@ model Positive_post {
 model Category {
   id    Int    @id @default(autoincrement())
   name  String
+}
+
+
+model Note {
+  id        String   @id @default(cuid())
+  title     String
+  content   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relationships for links
+  outgoingLinks Link[] @relation("SourceNotes")
+  incomingLinks Link[] @relation("TargetNotes")
+
+  // Optional: tags if you want them as a separate model or just an array
+  // tags      String[]
+}
+
+model Link {
+  id           String @id @default(cuid())
+  sourceNodeId String
+  targetNodeId String
+  label        String?
+
+  sourceNode Note @relation("SourceNotes", fields: [sourceNodeId], references: [id], onDelete: Cascade)
+  targetNode Note @relation("TargetNotes", fields: [targetNodeId], references: [id], onDelete: Cascade)
+
+  @@unique([sourceNodeId, targetNodeId]) // Ensures a unique link between two notes
 }
 
 enum Role {

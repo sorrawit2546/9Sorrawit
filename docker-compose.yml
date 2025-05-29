@@ -1,71 +1,95 @@
-# docker-compose.yml (แก้ไขสำหรับ Production - Option 1: Run next start)
+# docker-compose.yml (สำหรับ Development Environment)
+
+version: '3.8' # ระบุเวอร์ชันของ Docker Compose
 
 services:
-  frontend:                   # <--- Service สำหรับ Frontend
+  frontend: # <--- Service สำหรับ Frontend (Next.js)
     build:
-      context: ./client       # ชี้ไปที่ Directory ของ Client ที่มี Dockerfile (ที่แก้เป็น CMD ["npm", "start"] แล้ว)
-    container_name: 9sorrawit-frontend-1 # Optional: ตั้งชื่อ Container ให้อ้างอิงง่าย
-    restart: always           # Optional: แต่แนะนำสำหรับ Production ให้ Container เริ่มใหม่เสมอถ้าล่ม
+      context: ./client # ชี้ไปที่ Directory ของ Client ที่มี Dockerfile (สำหรับ dev)
+      dockerfile: Dockerfile # สามารถระบุชื่อ Dockerfile ได้ ถ้าไม่ได้ชื่อ Dockerfile ตรงๆ
+    container_name: 9sorrawit-frontend-dev
+    # restart: unless-stopped #  ถ้าต้องการให้เริ่มใหม่เมื่อ Docker daemon เริ่ม หรือเมื่อ container ล่ม
     environment:
-      NODE_ENV: production    # ตั้งค่า Environment เป็น Production
-    # ไม่ต้อง Map Port ออกสู่ Host เพราะ Nginx จะคุยผ่าน Docker Network ภายใน
-    # ไม่ต้อง Mount Volume โค้ด หรือ Volume build สำหรับวิธีนี้
-
-  server:                     # <--- Service สำหรับ Backend
-    build:
-      context: ./server
+      NODE_ENV: development # ตั้งค่า Environment เป็น Development
+      # ใส่ Environment Variables อื่นๆ ที่ Frontend DEV ต้องการที่นี่
+    ports:
+      - "3000:3000" # Map port 3000 ของ container (ที่ Next.js dev server รัน) มาที่ port 3000 ของ host
     volumes:
-      # เพิ่ม Volume Mount นี้
-      - uploads-data:/usr/src/app/uploads # <--- Map uploads-data ไปยัง /usr/src/app/uploads ใน server
-    container_name: 9sorrawit-server-1 # Optional: ตั้งชื่อ Container
-    restart: always           # Optional: แต่แนะนำสำหรับ Production
+      - ./client:/usr/src/app # Mount source code ของ client เข้าไปใน container
+      - /usr/src/app/node_modules # Volume สำหรับ node_modules เพื่อไม่ให้ local node_modules ทับ
+      - /usr/src/app/.next # Volume สำหรับ .next folder ของ Next.js (อาจช่วยเรื่อง caching ตอน dev)
+    # command: npm run dev # สามารถ override CMD ใน Dockerfile ได้ถ้าต้องการ
+
+  server: # <--- Service สำหรับ Backend
+    build:
+      context: ./server # ชี้ไปที่ Directory ของ Server ที่มี Dockerfile (สำหรับ dev)
+      dockerfile: Dockerfile
+    container_name: 9sorrawit-server-dev
+    # restart: unless-stopped
     environment:
-      NODE_ENV: production
+      NODE_ENV: development
       DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB} # ดึงค่าจาก .env
-    depends_on:
-      - postgres            # Server ต้องรอ Postgres พร้อมก่อน
-
-  postgres:                   # <--- Service สำหรับ Database
-    image: postgres:15        # ระบุเวอร์ชัน
-    container_name: 9sorrawit-postgres-1 # Optional: ตั้งชื่อ Container
-    restart: always           # Optional: แต่แนะนำสำหรับ Production
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER}         # ดึงค่าจาก .env
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD} # ดึงค่าจาก .env
-      POSTGRES_DB: ${POSTGRES_DB}             # ดึงค่าจาก .env
+      # ใส่ Environment Variables อื่นๆ ที่ Backend DEV ต้องการที่นี่
+    ports:
+      - "4000:4000" # สมมติว่า Backend dev server รันบน port 4000 (ปรับตามจริง)
     volumes:
-      - postgres-data:/var/lib/postgresql/data # เก็บข้อมูลถาวร
-    # ไม่ต้อง Map Port 5432 ออกสู่ Host
+      - ./server:/usr/src/app # Mount source code ของ server เข้าไปใน container
+      - /usr/src/app/node_modules # Volume สำหรับ node_modules
+      - uploads-data:/usr/src/app/uploads # Map uploads-data สำหรับไฟล์อัปโหลด (ถ้ามี)
+    depends_on:
+      - postgres # Server ต้องรอ Postgres พร้อมก่อน
+    # command: npm run dev # หรือคำสั่งสำหรับเริ่ม dev server ของ backend
 
-  pgadmin:                    # <--- Service สำหรับ PgAdmin
-    image: dpage/pgadmin4
-    container_name: 9sorrawit-pgadmin-1 # Optional: ตั้งชื่อ Container
-    restart: always           # Optional: แต่แนะนำสำหรับ Production
+  postgres: # <--- Service สำหรับ Database
+    image: postgres:15
+    container_name: 9sorrawit-postgres-dev
+    # restart: unless-stopped
     environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}       # ดึงค่าจาก .env
+      POSTGRES_USER: ${POSTGRES_USER} # ดึงค่าจาก .env
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD} # ดึงค่าจาก .env
+      POSTGRES_DB: ${POSTGRES_DB} # ดึงค่าจาก .env
+    ports: # เปิด port ของ Postgres ออกมาที่ host ถ้าต้องการเชื่อมต่อด้วย tool อื่นๆ จากภายนอก (optional)
+      - "5432:5432"
+    volumes:
+      - postgres-data-dev:/var/lib/postgresql/data # เก็บข้อมูลถาวร (ใช้ชื่อ volume แยกสำหรับ dev)
+
+  pgadmin: # <--- Service สำหรับ PgAdmin
+    image: dpage/pgadmin4
+    container_name: 9sorrawit-pgadmin-dev
+    # restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL} # ดึงค่าจาก .env
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD} # ดึงค่าจาก .env
     ports:
-      - "5050:5050"         # Map Port ให้เข้าจากภายนอกได้ (ต้องจำกัดที่ Security Group)
+      - "5050:80" # Map Port 80 ของ pgAdmin ใน container มาที่ 5050 ของ host
     depends_on:
-      - postgres            # PgAdmin ต้องรอ Postgres พร้อมก่อน
+      - postgres # PgAdmin ต้องรอ Postgres พร้อมก่อน
+    volumes: # (Optional but recommended) สร้าง volume เพื่อเก็บข้อมูลการตั้งค่าของ pgAdmin
+      - pgadmin-data-dev:/var/lib/pgadmin
 
-  nginx:                      # <--- Service สำหรับ Nginx Reverse Proxy
-    image: nginx:alpine
-    container_name: nginx-proxy
-    restart: always           # Optional: แต่แนะนำสำหรับ Production
-    ports:
-      - "80:80"             # รับ Request จากภายนอกที่ Port 80
-    volumes:
-       # Mount ไฟล์ Config ของ Nginx เข้าไป (ตรวจสอบ Path ให้ถูกต้อง)
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
-      # เพิ่ม Volume Mount นี้
-      - uploads-data:/var/www/html/uploads:ro # <--- Map uploads-data ไปยัง /var/www/html/uploads ใน nginx (อ่านอย่างเดียว)
-    depends_on:
-      # *** สำคัญสำหรับวิธีนี้: Nginx ต้องรอทั้ง frontend และ server พร้อม ***
-      - frontend            # รอ Frontend (ที่รัน next start) พร้อมสำหรับ location /
-      - server              # รอ Server (Backend) พร้อมสำหรับ location /api/
+
+  # Nginx (ส่วนนี้จะคอมเมนต์ไว้ก่อนสำหรับ Development เพื่อความง่าย)
+  # ถ้าจำเป็นต้องใช้ Nginx ใน Development (เช่น ทดสอบ reverse proxy routing)
+  # ให้ uncomment ส่วนนี้ และปรับ config ใน ./nginx/default.conf ให้ถูกต้อง
+  # โดย Nginx จะต้อง proxy_pass ไปยัง service name และ port ภายใน Docker network
+  # เช่น proxy_pass http://frontend:3000; สำหรับ frontend
+  # และ proxy_pass http://server:4000; สำหรับ backend (ถ้า backend รันบน port 4000)
+
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: nginx-proxy-dev
+  #   # restart: unless-stopped
+  #   ports:
+  #     - "80:80" # รับ Request จากภายนอกที่ Port 80
+  #   volumes:
+  #     - ./nginx/dev.default.conf:/etc/nginx/conf.d/default.conf:ro # ใช้ config Nginx สำหรับ dev
+  #     - uploads-data:/var/www/html/uploads:ro
+  #   depends_on:
+  #     - frontend
+  #     - server
 
 # กำหนด Named Volumes ที่ส่วนท้ายสุดของไฟล์
 volumes:
-  postgres-data:            # มีแค่ Volume ของ Postgres เท่านั้น (ถูกต้อง)
-  uploads-data:
+  postgres-data-dev: # Volume สำหรับข้อมูล Postgres (แยกจาก production)
+  pgadmin-data-dev:  # Volume สำหรับข้อมูล pgAdmin (แยกจาก production)
+  uploads-data:      # Volume สำหรับไฟล์ uploads (อาจจะใช้ร่วมกันได้ หรือแยกถ้าต้องการ)

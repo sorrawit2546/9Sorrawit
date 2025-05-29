@@ -5,6 +5,7 @@ import axios from "axios";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { useEffect, useState } from "react";
 import { Terminal } from "lucide-react";
+import Footer from "@/components/footer";
 
 interface User {
   email: string,
@@ -43,7 +44,7 @@ export default function RegisterPage() {
 
 
   return (
-    <div className="font-manrope font-bold space-y-3">
+    <div className="font-manrope font-bold space-y-3 bg-white dark:bg-black">
       <Header />
       <Alert className="flex flex-col justify-self-center w-[800px]">
         <Terminal className="h-4 w-4" />
@@ -52,11 +53,11 @@ export default function RegisterPage() {
           You can add components to your app using the cli.
         </AlertDescription>
       </Alert>
-      <div className="flex justify-self-center">
+      <div className="flex justify-self-center dark:bg-gray-200 rounded-xl">
         <form onSubmit={handleRegister}>
           <div className="flex flex-row w-[980px] h-[500px] shadow-2xl  rounded-xl space-x-20">
             <div className="flex w-[490px] h-full shadow-2xl rounded-xl justify-center items-center">
-              <img className="w-[300px] h-[300px]" src="/logo9sorrawit.png" alt="" />
+              <img className="w-[300px] h-[300px]" src="/newlog_website.PNG" alt="" />
             </div>
             <div className="flex flex-col justify-center items-start space-y-2">
               <div className="">
@@ -83,7 +84,8 @@ export default function RegisterPage() {
             </div>
           </div>
         </form>
-      </div>
+      </div>   
+      <Footer />
     </div>
   )
 }
