@@ -7,6 +7,7 @@ import Note_box from "@/components/note";
 import Header from "@/components/header";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
+import Footer from "@/components/footer";
 
 
 export default function About() {
@@ -43,7 +44,7 @@ export default function About() {
 
   const handleDeletePositive = async (id: number) => {
     try {
-      const response = await axios.delete(`http://localhost:4000/api/positivepost/${id}`);
+      const response = await axios.delete(`api/positivepost/${id}`);
       if (response.status === 200) {
         console.log("Delete Complete:", response.data);
         setPositivePost((prev) => prev?.filter((post) => post.id !== id) ?? []);
@@ -76,7 +77,7 @@ export default function About() {
 
   const fetchUserProfile = async (authToken: string) => {
     try {
-      const response = await axios.get<Users>("http://localhost:4000/api/users", {
+      const response = await axios.get<Users>(`api/users`, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
@@ -92,7 +93,7 @@ export default function About() {
   useEffect(() => {
     const fetchPositiveNote = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/api/getpositiveposts");
+        const res = await axios.get(`api/getpositiveposts`); //
         setPositivePost(res.data);
         console.log(res.data)
       } catch (error) {
@@ -107,12 +108,12 @@ export default function About() {
   return (
     <div className="xl:w-full  xl:space-y-32 dark:bg-zinc-900 dark:text-white">
       <Header />
-      <div className="flex font-manrope items-center justify-center">
-        <div className="flex flex-col text-[50px] font-bold items-center space-y-4">
-          <h1>Positive Note</h1>
+      <div className="flex font-manrope  items-center justify-center">
+        <div className="flex flex-col lg:text-[50px] mb:text-[30px]  font-bold items-center space-y-4">
+          <h1 className="">Positive Note</h1>
           <h1>3 Lines of positive notes</h1>
-          <div className="flex flex-row gap-5">
-            <div className="flex flex-row text-[30px]">
+          <div className="xl:flex xl:flex-row lg:flex lg:flex-row mb:flex mb:flex-col mb:justify-center mb:items-center gap-5 ">
+            <div className="flex flex-row  text-[30px]">
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -165,7 +166,7 @@ export default function About() {
           transition={{ duration: 1.2, ease: "easeInOut" }}
           className="xl:mt-24 flex text-[40px]"
         >
-          <h1 className="xl:max-w-4xl font-bold text-center">
+          <h1 className="xl:max-w-4xl xl:text-[50px] lg:text-[50px] mb:text-[35px] mb:ml-3  mb:mr-3 mb:mt-3 font-bold text-center ">
             Theory from Dr. Zion Kabasawa. <br /> It talks about harvesting happiness each day through taking 3 lines of notes.
           </h1>
         </motion.div>
@@ -209,7 +210,7 @@ export default function About() {
                   {Array.isArray(post.image) && post.image.map((imagePost, index) => (
                     <img
                       key={index}
-                      src={`http://localhost:4000/${imagePost}`}
+                      src={`/${imagePost}`}
                       alt={`Post Image ${index}`}
                       style={{
                         width: '200px', // กำหนดขนาดให้เหมาะสม
@@ -219,17 +220,18 @@ export default function About() {
                     />
                   ))}
                 </div>
-                <div className="mt-2">
+                {/* <div className="mt-2">
                   <Button variant="destructive" onClick={() => handleDeletePositive(post.id)}>
                     Delete
                   </Button>
-                </div>
+                </div> */}
               </div>
             </div>
           ))}
         </div>
 
       </div>
+      <Footer />
     </div>
 
   );

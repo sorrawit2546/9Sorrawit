@@ -82,10 +82,10 @@ export default function Header() {
             <div className=" max-w-full w-96 mb:flex-row sm:flex-row  md:flex-row flex items-center justify-center gap-[15px]">
                 <img
                     className="w-[80px] lg:w-[60px] h-fulllg:h-[60px]"
-                    src="/logo9sorrawit.png"
+                    src="/newlog_website.PNG"
                     alt="logowebsite"
                 />
-                <label className="font-manrope font-semibold xl:pr-32 text-[48px] md:text-6xl lg:text-6xl bg-gradient-to-r from-[#C800FF] to-[#410097] inline-block text-transparent bg-clip-text">
+                <label className="font-manrope font-semibold xl:pr-32 text-[48px] md:text-6xl lg:text-6xl bg-gradient-to-r from-[#303030] to-[#0051ff] dark:bg-gradient-to-r dark:from-[#ffffff] dark:to-[#0051ff] inline-block text-transparent bg-clip-text">
                     9Sorrawit
                 </label>
             </div>
@@ -152,7 +152,7 @@ export default function Header() {
                         Home
                     </a>
                     <a
-                        href="/9note"
+                        href="/note"
                         onClick={(e) => isMounted && handleNavClick('/github', e)}
                         className={`px-6 py-2 rounded-[50px] transition-all duration-300 
                         ${isMounted && currentPath === '/github'

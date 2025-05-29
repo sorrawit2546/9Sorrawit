@@ -1,59 +1,71 @@
-services:
-  frontend:
-    build:
-      context: ./client
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./client:/usr/src/app
-      - /usr/src/app/node_modules
-    environment:
-      - NODE_ENV=development
+# docker-compose.yml (แก้ไขสำหรับ Production - Option 1: Run next start)
 
-  server:
+services:
+  frontend:                   # <--- Service สำหรับ Frontend
+    build:
+      context: ./client       # ชี้ไปที่ Directory ของ Client ที่มี Dockerfile (ที่แก้เป็น CMD ["npm", "start"] แล้ว)
+    container_name: 9sorrawit-frontend-1 # Optional: ตั้งชื่อ Container ให้อ้างอิงง่าย
+    restart: always           # Optional: แต่แนะนำสำหรับ Production ให้ Container เริ่มใหม่เสมอถ้าล่ม
+    environment:
+      NODE_ENV: production    # ตั้งค่า Environment เป็น Production
+    # ไม่ต้อง Map Port ออกสู่ Host เพราะ Nginx จะคุยผ่าน Docker Network ภายใน
+    # ไม่ต้อง Mount Volume โค้ด หรือ Volume build สำหรับวิธีนี้
+
+  server:                     # <--- Service สำหรับ Backend
     build:
       context: ./server
-    ports:
-      - "4000:4000"
     volumes:
-      - ./server:/usr/src/app
+      # เพิ่ม Volume Mount นี้
+      - uploads-data:/usr/src/app/uploads # <--- Map uploads-data ไปยัง /usr/src/app/uploads ใน server
+    container_name: 9sorrawit-server-1 # Optional: ตั้งชื่อ Container
+    restart: always           # Optional: แต่แนะนำสำหรับ Production
     environment:
-      - NODE_ENV=development
-      - DATABASE_URL=postgresql://myuser:mypassword@postgres:5432/sorrawit_db
+      NODE_ENV: production
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB} # ดึงค่าจาก .env
     depends_on:
-      - postgres
+      - postgres            # Server ต้องรอ Postgres พร้อมก่อน
 
-  postgres:
-    image: postgres:latest
+  postgres:                   # <--- Service สำหรับ Database
+    image: postgres:15        # ระบุเวอร์ชัน
+    container_name: 9sorrawit-postgres-1 # Optional: ตั้งชื่อ Container
+    restart: always           # Optional: แต่แนะนำสำหรับ Production
     environment:
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
-      POSTGRES_DB: sorrawit_db
-    ports:
-      - "5432:5432"
+      POSTGRES_USER: ${POSTGRES_USER}         # ดึงค่าจาก .env
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD} # ดึงค่าจาก .env
+      POSTGRES_DB: ${POSTGRES_DB}             # ดึงค่าจาก .env
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data # เก็บข้อมูลถาวร
+    # ไม่ต้อง Map Port 5432 ออกสู่ Host
 
-  pgadmin:
+  pgadmin:                    # <--- Service สำหรับ PgAdmin
     image: dpage/pgadmin4
+    container_name: 9sorrawit-pgadmin-1 # Optional: ตั้งชื่อ Container
+    restart: always           # Optional: แต่แนะนำสำหรับ Production
     environment:
-      PGADMIN_DEFAULT_EMAIL: 9sorrawit@admin.com
-      PGADMIN_DEFAULT_PASSWORD: root
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}       # ดึงค่าจาก .env
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD} # ดึงค่าจาก .env
     ports:
-      - "5050:5050"
+      - "5050:5050"         # Map Port ให้เข้าจากภายนอกได้ (ต้องจำกัดที่ Security Group)
     depends_on:
-      - postgres
+      - postgres            # PgAdmin ต้องรอ Postgres พร้อมก่อน
 
-  nginx:
+  nginx:                      # <--- Service สำหรับ Nginx Reverse Proxy
     image: nginx:alpine
     container_name: nginx-proxy
+    restart: always           # Optional: แต่แนะนำสำหรับ Production
     ports:
-      - "8080:80"
+      - "80:80"             # รับ Request จากภายนอกที่ Port 80
     volumes:
-      - ./server/nginx/default.conf:/etc/nginx/conf.d/default.conf
+       # Mount ไฟล์ Config ของ Nginx เข้าไป (ตรวจสอบ Path ให้ถูกต้อง)
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      # เพิ่ม Volume Mount นี้
+      - uploads-data:/var/www/html/uploads:ro # <--- Map uploads-data ไปยัง /var/www/html/uploads ใน nginx (อ่านอย่างเดียว)
     depends_on:
-      - frontend
-      - server
+      # *** สำคัญสำหรับวิธีนี้: Nginx ต้องรอทั้ง frontend และ server พร้อม ***
+      - frontend            # รอ Frontend (ที่รัน next start) พร้อมสำหรับ location /
+      - server              # รอ Server (Backend) พร้อมสำหรับ location /api/
 
+# กำหนด Named Volumes ที่ส่วนท้ายสุดของไฟล์
 volumes:
-  postgres-data:
+  postgres-data:            # มีแค่ Volume ของ Postgres เท่านั้น (ถูกต้อง)
+  uploads-data:
