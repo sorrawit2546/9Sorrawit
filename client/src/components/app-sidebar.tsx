@@ -49,8 +49,8 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-2xl text-white">Notedot</SidebarGroupLabel>
-          <SidebarGroupContent>
+          <SidebarGroupLabel className="flex text-2xl text-black mt-4 "><img className=" w-7 h-7 " src="/newlog_website.PNG" alt="" />noteDot</SidebarGroupLabel>
+          <SidebarGroupContent className="mt-4">
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
