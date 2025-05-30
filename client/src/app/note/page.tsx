@@ -44,7 +44,7 @@ export default function About() {
 
   const handleDeletePositive = async (id: number) => {
     try {
-      const response = await axios.delete(`api/positivepost/${id}`);
+      const response = await axios.delete(`http://server:4000/api/positivepost/${id}`);
       if (response.status === 200) {
         console.log("Delete Complete:", response.data);
         setPositivePost((prev) => prev?.filter((post) => post.id !== id) ?? []);

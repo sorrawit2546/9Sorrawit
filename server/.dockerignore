@@ -1,0 +1,7 @@
+node_modules
+npm-debug.log
+Dockerfile
+.dockerignore
+.git
+.env
+# เพิ่มไฟล์หรือโฟลเดอร์อื่นๆ ที่ไม่จำเป็นต้องอยู่ใน Image

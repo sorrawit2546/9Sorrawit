@@ -49,7 +49,7 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Notedot</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-2xl text-white">Notedot</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
