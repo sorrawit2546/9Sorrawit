@@ -29,7 +29,7 @@ exports.getAllNotedot = async (req: Request, res: Response) => {
                 createdAt: 'desc'
             },
         });
-        res.status(400).json(getAllNote);
+        res.json(getAllNote);
     } catch (error) {
         console.error("Error : => ", error)
         res.status(500).json({ error: "Error to get all notes!" })

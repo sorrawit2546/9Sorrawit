@@ -65,6 +65,7 @@ export default function page() {
             // Handle the response data
             setUserInfo(response.data);
             console.log(response.data);
+            
         } catch (error) {
             console.error("Error fetching user profile:", error);
         }
@@ -111,10 +112,7 @@ export default function page() {
                 </div>
             ) : (
                 <div>
-                    <button onClick={handleLogout} className="bg-white dark:bg-black dark:hover:hover:bg-sky-400  dark:text-white shadow-2xl rounded-3xl w-40 h-10 mt-5" type="submit">Logout</button>
-                    <div>
-                        <span>Hello : </span>{userInfo?.user[0].name}
-                    </div>
+                 
                 </div>
 
             )}

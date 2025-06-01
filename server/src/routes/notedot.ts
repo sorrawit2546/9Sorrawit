@@ -4,10 +4,10 @@ const router = express.Router();
 //import notedot controller
 const {createNotedot , getAllNotedot,getNotedot,updateNotebyID,deleteNotedot} = require('../controllers/notedot_controller');
 
-router.post("/createnotedot" , createNotedot);
-router.get("/getallnotedot" , getAllNotedot);
-router.get("/getnotedot/:id" , getNotedot);
-router.put("/updatenotebyID/:id" , updateNotebyID);
-router.delete("/deletenotedot/:id" , deleteNotedot);
+router.post("/notes" , createNotedot);
+router.get("/notes" , getAllNotedot);
+router.get("/notes/:id" , getNotedot);
+router.put("/notes/:id" , updateNotebyID);
+router.delete("/notes/:id" , deleteNotedot);
 
 module.exports = router;
