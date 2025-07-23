@@ -27,9 +27,8 @@ export default function Card() {
     return (
         <div className="grid xl:grid-cols-3 lg:grid-cols-3 xl:gap-5 xl:mt-5 xl:mb-5 lg:gap-5 lg:mt-5 lg:mb-5 mb:grid-cols-1 mb:gap-y-10 dark:text-black">
             {posts.map(({ slug, frontmatter }) => (
-                <a href={`/posts/${slug}`}>
+                <a key={slug} href={`/posts/${slug}`}>
                     <div
-                        key={slug}
                         className="flex flex-col drop-shadow-2xl max-w-full xl:w-80 xl:h-[400px] md:w-72 md:h-[350px] mb:w-60  rounded-[30px] bg-white items-center hover:transition duration-500 hover:scale-110"
                     >
                         <div className="flex justify-center items-center w-full h-48 sm:w-full mb-5 md:w-full lg:w-full xl:w-full rounded-[15px]">
