@@ -45,7 +45,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}       # ดึงค่าจาก .env
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD} # ดึงค่าจาก .env
     ports:
-      - "5050:5050"         # Map Port ให้เข้าจากภายนอกได้ (ต้องจำกัดที่ Security Group)
+      - "5050:80"         # Map Port ให้เข้าจากภายนอกได้ (ต้องจำกัดที่ Security Group)
     depends_on:
       - postgres            # PgAdmin ต้องรอ Postgres พร้อมก่อน
 
